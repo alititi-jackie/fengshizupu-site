@@ -1,0 +1,15 @@
+[
+  {
+    "id": "a000001",
+    "title": "首批冯氏族谱影像",
+    "source": "项目持有人提供的27张族谱照片",
+    "compilationDate": null,
+    "version": null,
+    "lineageIds": [],
+    "villageIds": [
+      "v000001"
+    ],
+    "rights": "由提供者确认公开范围；如有错误或隐私问题请申请更正。",
+    "status": "needs_review"
+  }
+]

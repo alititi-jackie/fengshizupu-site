@@ -1,0 +1,5 @@
+import fs from 'node:fs';import path from 'node:path';
+const walk=d=>fs.readdirSync(d,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(d,e.name)):[path.join(d,e.name)]);
+let count=0;const errors=[];for(const file of walk('out').filter(p=>p.endsWith('.html'))){const html=fs.readFileSync(file,'utf8');for(const match of html.matchAll(/(?:href|src)="([^"#?]+)[^"]*"/g)){const url=match[1];if(!url.startsWith('/')||url.startsWith('//'))continue;const target=path.join('out',decodeURIComponent(url));if(!fs.existsSync(target)||fs.statSync(target).isDirectory()&&!fs.existsSync(path.join(target,'index.html')))errors.push(`${file}: ${url}`);count++}if(!file.endsWith('404.html')&&!file.includes('/404/')&&!file.includes('/_not-found/')&&!html.includes('https://fengshizupu.com'))errors.push(`missing canonical ${file}`)}
+for(const url of JSON.parse(fs.readFileSync('data/permanent-urls.json'))){if(!fs.existsSync(path.join('out',url,'index.html')))errors.push(`lost permanent URL ${url}`)}
+if(errors.length){console.error(errors);process.exit(1)}console.log(`Checked ${count} internal links/resources and permanent URLs`);

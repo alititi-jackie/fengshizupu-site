@@ -1,0 +1,563 @@
+[
+  {
+    "id": "rel000001",
+    "fromPersonId": "p000001",
+    "toPersonId": "p000002",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000001"
+    ],
+    "verification": "ai_draft",
+    "notes": "第1张谱页父子连线识读草稿，待人工核对。"
+  },
+  {
+    "id": "rel000002",
+    "fromPersonId": "p000001",
+    "toPersonId": "p000003",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000001"
+    ],
+    "verification": "ai_draft",
+    "notes": "第1张谱页父子连线识读草稿，待人工核对。"
+  },
+  {
+    "id": "rel000003",
+    "fromPersonId": "p000004",
+    "toPersonId": "p000005",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000002"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000004",
+    "fromPersonId": "p000005",
+    "toPersonId": "p000006",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000002"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000005",
+    "fromPersonId": "p000007",
+    "toPersonId": "p000008",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000003"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000006",
+    "fromPersonId": "p000008",
+    "toPersonId": "p000009",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000003"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000007",
+    "fromPersonId": "p000010",
+    "toPersonId": "p000011",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000004"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000008",
+    "fromPersonId": "p000011",
+    "toPersonId": "p000012",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000004"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000009",
+    "fromPersonId": "p000013",
+    "toPersonId": "p000014",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000005"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000010",
+    "fromPersonId": "p000014",
+    "toPersonId": "p000015",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000005"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000011",
+    "fromPersonId": "p000016",
+    "toPersonId": "p000017",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000006"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000012",
+    "fromPersonId": "p000018",
+    "toPersonId": "p000019",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000007"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000013",
+    "fromPersonId": "p000019",
+    "toPersonId": "p000020",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000007"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000014",
+    "fromPersonId": "p000021",
+    "toPersonId": "p000022",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000008"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000015",
+    "fromPersonId": "p000022",
+    "toPersonId": "p000023",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000008"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000016",
+    "fromPersonId": "p000024",
+    "toPersonId": "p000025",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000009"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000017",
+    "fromPersonId": "p000025",
+    "toPersonId": "p000026",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000009"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000018",
+    "fromPersonId": "p000027",
+    "toPersonId": "p000028",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000010"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000019",
+    "fromPersonId": "p000028",
+    "toPersonId": "p000029",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000010"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000020",
+    "fromPersonId": "p000030",
+    "toPersonId": "p000031",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000011"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000021",
+    "fromPersonId": "p000031",
+    "toPersonId": "p000032",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000011"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000022",
+    "fromPersonId": "p000033",
+    "toPersonId": "p000034",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000012"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000023",
+    "fromPersonId": "p000034",
+    "toPersonId": "p000035",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000012"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000024",
+    "fromPersonId": "p000036",
+    "toPersonId": "p000037",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000013"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000025",
+    "fromPersonId": "p000037",
+    "toPersonId": "p000038",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000013"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000026",
+    "fromPersonId": "p000039",
+    "toPersonId": "p000040",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000014"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000027",
+    "fromPersonId": "p000040",
+    "toPersonId": "p000041",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000014"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000028",
+    "fromPersonId": "p000042",
+    "toPersonId": "p000043",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000015"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000029",
+    "fromPersonId": "p000043",
+    "toPersonId": "p000044",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000015"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000030",
+    "fromPersonId": "p000045",
+    "toPersonId": "p000046",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000016"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000031",
+    "fromPersonId": "p000046",
+    "toPersonId": "p000047",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000016"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000032",
+    "fromPersonId": "p000048",
+    "toPersonId": "p000049",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000017"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000033",
+    "fromPersonId": "p000049",
+    "toPersonId": "p000050",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000017"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000034",
+    "fromPersonId": "p000051",
+    "toPersonId": "p000052",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000018"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000035",
+    "fromPersonId": "p000053",
+    "toPersonId": "p000054",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000019"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000036",
+    "fromPersonId": "p000054",
+    "toPersonId": "p000055",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000019"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000037",
+    "fromPersonId": "p000056",
+    "toPersonId": "p000057",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000020"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000038",
+    "fromPersonId": "p000057",
+    "toPersonId": "p000058",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000020"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000039",
+    "fromPersonId": "p000059",
+    "toPersonId": "p000060",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000021"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000040",
+    "fromPersonId": "p000060",
+    "toPersonId": "p000061",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000021"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000041",
+    "fromPersonId": "p000062",
+    "toPersonId": "p000063",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000022"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000042",
+    "fromPersonId": "p000063",
+    "toPersonId": "p000064",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000022"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000043",
+    "fromPersonId": "p000065",
+    "toPersonId": "p000066",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000023"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000044",
+    "fromPersonId": "p000066",
+    "toPersonId": "p000067",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000023"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000045",
+    "fromPersonId": "p000068",
+    "toPersonId": "p000069",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000024"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000046",
+    "fromPersonId": "p000070",
+    "toPersonId": "p000071",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000025"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000047",
+    "fromPersonId": "p000071",
+    "toPersonId": "p000072",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000025"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000048",
+    "fromPersonId": "p000073",
+    "toPersonId": "p000074",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000026"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000049",
+    "fromPersonId": "p000074",
+    "toPersonId": "p000075",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000026"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000050",
+    "fromPersonId": "p000076",
+    "toPersonId": "p000077",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000027"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  },
+  {
+    "id": "rel000051",
+    "fromPersonId": "p000077",
+    "toPersonId": "p000078",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000027"
+    ],
+    "verification": "ai_draft",
+    "notes": "仅据同页相邻世系连线识读，待人工核实；不推断跨页连接。"
+  }
+]

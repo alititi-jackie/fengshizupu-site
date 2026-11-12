@@ -1,0 +1,11 @@
+[
+  {
+    "id": "v000001",
+    "currentRegionId": null,
+    "name": "首批收录村庄（地名待核实）",
+    "aliases": [],
+    "historicalRegions": [],
+    "description": "来自用户提供的27张冯氏族谱照片。正式村名及行政归属待人工确认。",
+    "status": "needs_review"
+  }
+]
