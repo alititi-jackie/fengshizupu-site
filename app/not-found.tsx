@@ -1,1 +1,1 @@
-export default function NotFound(){return <><h1>未找到该页面</h1><p>请检查永久编号或从目录重新查找。</p><a href='/archives/'>返回原谱档案</a></>}
+export default function NotFound(){return <><h1>未找到该页面</h1><p>请检查编号或从目录重新查找。</p><a href='/archives/'>返回原谱档案</a></>}
