@@ -7,7 +7,7 @@
 app/{page.tsx,regions/,search/,villages/[id]/,persons/[id]/,archives/,archives/[id]/,archives/[id]/pages/[pageId]/,about/}
 components/{SearchBox,FamilyTree,ArchiveViewer,RegionSelector,Breadcrumbs}
 data/{regions,villages,lineages,archives,persons,relationships}
-public/archives/a000001/originals/
+public/archives/a000100/originals/
 scripts/{validate-data,build-search-index,check-links,build-pdf}
 docs/; .github/workflows/
 
