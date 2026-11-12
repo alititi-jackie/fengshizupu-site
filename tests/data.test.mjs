@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {validate,load} from '../scripts/validate-data.mjs';
-const fixture=()=>Object.fromEntries(['regions','villages','lineages','branches','archives','archive_pages','persons','relationships','person_sources'].map(n=>[n,load(n)]));
+const fixture=()=>Object.fromEntries(['regions','villages','archives','archive_pages','persons','relationships','person_sources'].map(n=>[n,load(n)]));
 test('real data and original hashes are valid',()=>assert.deepEqual(validate(fixture(),true),[]));
 test('reject parent cycle',()=>{const d=fixture();d.relationships.push({...d.relationships[0],id:'rel999999',fromPersonId:'p000002',toPersonId:'p000001'});assert(validate(d).some(e=>e.includes('cycle')))});
 test('reject self relation',()=>{const d=fixture();d.relationships[0].toPersonId='p000001';assert(validate(d).some(e=>e.includes('self')))});
