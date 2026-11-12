@@ -24,7 +24,6 @@ export default function Home() {
           <a href="/regions/">浏览地区目录 →</a>
         </article>
       </div>
-      <p className="notice">目前收录一个村庄的27张照片。</p>
       {fengLinks.length > 0 && (
         <section>
           <h2>冯氏宗亲网站</h2>
