@@ -10,8 +10,8 @@
 
 本地验证：生产静态构建通过，TypeScript通过，5项数据测试通过，2581处内部链接/资源及永久URL检查通过，PDF经pypdf检查为27页，第4页渲染检查转正且未裁切；原图哈希通过。
 
-浏览器验证：已编写390px和1440px端到端流程。当前执行环境的Chromium因socket() Operation not permitted无法启动；浏览器下载也返回无效压缩包。本地浏览器测试不能算通过。已纳入GitHub Actions在可安装Chromium的runner执行，发布以远端实际结果为准。
+浏览器验证：已编写390px和1440px端到端流程。当前执行环境的Chromium因socket() Operation not permitted无法启动；浏览器下载也返回无效压缩包。本地浏览器测试不能算通过。随后 GitHub Actions run 43134538927 在云端 Chromium 完成390px和1440px两种尺寸的搜索、人物深链接刷新、世系展开、图片放大、翻页、简繁别名、无结果及PDF响应测试，全部通过。
 
 未完成：所有姓名全文转写、人工校对、完整世代/配偶/过继关系、跨页同人合并、精确原图坐标、行政区划确认及相应筛选、GEDCOM转换/批量CSV导入、真实手机人工验收及中国内地访问实测。待核实人物页暂不索引。
 
-部署：代码含Actions工作流和CNAME；DNS未修改、未开通付费服务。需查看本次提交对应Actions结果，不能把构建完成视作正式域名上线。
+部署：GitHub Actions run 43134538927 已构建与部署成功。正式域名 https://fengshizupu.com/、/persons/p000001/、/archives/a000001/pages/pg000027/ 均实测HTTP 200且canonical正确；robots.txt及sitemap.xml均HTTP 200。DNS未修改，使用用户已有域名配置；未开通付费服务。最新多档案链接修正提交2e7dea6对应run 43134741755，该运行的构建、浏览器测试及部署全部成功。已下载并目视检查390px和1440px首页截图，未发现裁切或溢出。
