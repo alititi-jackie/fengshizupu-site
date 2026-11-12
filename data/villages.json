@@ -2,10 +2,19 @@
   {
     "id": "v000001",
     "currentRegionId": null,
-    "name": "首批收录村庄（地名待核实）",
+    "name": "小滘村",
     "aliases": [],
     "historicalRegions": [],
-    "description": "来自用户提供的27张冯氏族谱照片。正式村名及行政归属待人工确认。",
+    "description": "村名据谱页页眉「良西镇小滘村…房」识读（AI草稿）：本村为良西镇小滘村。良西镇所属县市等行政归属待人工核实后另行建立地区数据；村庄正式定名亦待人工确认。",
+    "status": "needs_review"
+  },
+  {
+    "id": "v000002",
+    "currentRegionId": null,
+    "name": "平乐村",
+    "aliases": [],
+    "historicalRegions": [],
+    "description": "据第13、14页谱页页眉「良西镇小滘村、平乐村凝斋房（沛思）」识读（AI草稿）：沛思房世系横跨小滘村与平乐村两村。平乐村的镇级归属（是否同属良西镇）及行政归属待人工核实；正式定名待人工确认。",
     "status": "needs_review"
   }
 ]
