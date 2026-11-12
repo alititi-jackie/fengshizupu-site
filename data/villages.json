@@ -5,8 +5,14 @@
     "name": "小湴村",
     "aliases": [],
     "historicalRegions": [],
-    "description": "本村为良西镇小湴村，凝斋房世系所在村。",
-    "status": "needs_review"
+    "description": "良西镇小湴村位于广东省江门市恩平市良西镇，是雁鹅村委会下辖的一个自然村小组。",
+    "status": "needs_review",
+    "sections": [
+      {
+        "heading": "地理位置与行政区划",
+        "body": "小湴村隶属于良西镇雁鹅村委会。良西镇位于恩平市西北部，面积121.75平方公里，下辖8个村委会和1个社区居委会，户籍人口约2.4万人。"
+      }
+    ]
   },
   {
     "id": "v000002",
