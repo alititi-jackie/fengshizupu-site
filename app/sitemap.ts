@@ -1,2 +1,2 @@
 export const dynamic='force-static';
-import {routes} from '../lib/data';export default function sitemap(){return routes().filter(p=>!p.startsWith('/persons/')).map(p=>({url:'https://fengshizupu.com'+p}));}
+import {routes} from '../lib/data';export default function sitemap(){return routes().filter(p=>!p.startsWith('/persons/')&&!p.startsWith('/raw')).map(p=>({url:'https://fengshizupu.com'+p}));}
