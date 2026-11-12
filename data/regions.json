@@ -1,6 +1,6 @@
 [
   {
-    "id": "r000001",
+    "id": "r000100",
     "name": "广东省",
     "level": "province",
     "parentId": null,
@@ -9,39 +9,39 @@
     "status": "active"
   },
   {
-    "id": "r000002",
+    "id": "r000101",
     "name": "江门市",
     "level": "prefecture",
-    "parentId": "r000001",
+    "parentId": "r000100",
     "aliases": [],
     "description": "广东省辖地级市，位于珠江三角洲西部。",
     "status": "active"
   },
   {
-    "id": "r000003",
+    "id": "r000102",
     "name": "恩平市",
     "level": "county",
-    "parentId": "r000002",
+    "parentId": "r000101",
     "aliases": [],
     "description": "江门市代管的县级市。",
     "status": "active"
   },
   {
-    "id": "r000004",
+    "id": "r000103",
     "name": "良西镇",
     "level": "township",
-    "parentId": "r000003",
+    "parentId": "r000102",
     "aliases": [],
     "description": "恩平市西北部的一个镇，面积121.75平方公里，下辖8个村委会和1个社区居委会，户籍人口约2.4万人。",
     "status": "active"
   },
   {
-    "id": "r000005",
+    "id": "r000104",
     "name": "雁鹅村委会",
     "level": "other",
-    "parentId": "r000004",
+    "parentId": "r000103",
     "aliases": [],
-    "description": "良西镇下辖村委会，小湴村隶属于该村委会。",
+    "description": "良西镇下辖村委会，小湴村、平乐村隶属于该村委会。",
     "status": "active"
   }
 ]

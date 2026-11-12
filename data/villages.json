@@ -14,7 +14,7 @@
       }
     ],
     "regionIds": [
-      "r000005"
+      "r000104"
     ]
   },
   {
@@ -24,6 +24,9 @@
     "aliases": [],
     "historicalRegions": [],
     "description": "沛思房世系横跨小湴村与平乐村两村，见第13、14页谱页页眉。",
-    "status": "needs_review"
+    "status": "needs_review",
+    "regionIds": [
+      "r000104"
+    ]
   }
 ]

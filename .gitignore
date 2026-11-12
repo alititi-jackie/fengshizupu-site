@@ -4,3 +4,4 @@ out/
 *.tsbuildinfo
 public/archives/*/derived/
 public/downloads/
+data/search-index.json
