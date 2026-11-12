@@ -7,7 +7,7 @@ import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
 import { ArchiveList, ArchiveCatalog, ArchivePageDetail } from '../../components/sections/Archives';
-import { RawIndex, RawArchive } from '../../components/sections/Raw';
+import { OriginalsIndex, OriginalsArchive } from '../../components/sections/Originals';
 
 type Props = { params: Promise<{ path?: string[] }> };
 export const dynamicParams = false;
@@ -20,9 +20,9 @@ function title(path: string[]) {
   if (!path.length) return '寻根有据，世系有源';
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
-  if (path[0] === 'raw' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原图`;
+  if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
   if (path.length === 4) return `谱页 ${pages.find((x) => x.id === path[3])?.sequence || ''}`;
-  return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', raw: '原图' } as Record<string, string>)[path[0]] || '冯氏族谱';
+  return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案' } as Record<string, string>)[path[0]] || '冯氏族谱';
 }
 
 export async function generateMetadata({ params }: Props) {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
     openGraph: { title: fullTitle, url, locale: 'zh_CN', type: 'website', images: [{ url: '/og-logo.png', width: 512, height: 512, alt: '冯氏族谱' }] },
     twitter: { card: 'summary', title: fullTitle, images: ['/og-logo.png'] },
     ...(path[0] === 'persons' && persons.find((x) => x.id === path[1])?.verification !== 'verified' ? { robots: { index: false, follow: true } } : {}),
-    ...(path[0] === 'raw' ? { robots: { index: false, follow: false } } : {}),
+    ...(path[0] === 'originals' ? { robots: { index: false, follow: false } } : {}),
   };
 }
 
@@ -54,8 +54,8 @@ export default async function Page({ params }: Props) {
   else if (path[0] === 'villages') content = <Village id={path[1]} />;
   else if (path[0] === 'persons') content = <Person id={path[1]} />;
   else if (path.length === 4) content = <ArchivePageDetail id={path[3]} />;
-  else if (path[0] === 'raw' && path.length === 1) content = <RawIndex />;
-  else if (path[0] === 'raw') content = <RawArchive id={path[1]} />;
+  else if (path[0] === 'originals' && path.length === 1) content = <OriginalsIndex />;
+  else if (path[0] === 'originals') content = <OriginalsArchive id={path[1]} />;
   else if (path.length === 1) content = <ArchiveList />;
   else content = <ArchiveCatalog id={path[1]} />;
   return (

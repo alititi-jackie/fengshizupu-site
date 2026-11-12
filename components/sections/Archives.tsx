@@ -36,6 +36,7 @@ export function ArchiveCatalog({ id }: { id: string }) {
           </a>
         ))}
       </div>
+      <p><a href={`/originals/${a.id}/`}>原谱档案 →</a></p>
     </>
   );
 }

@@ -5,7 +5,7 @@
 ## 技术与目录
 
 - Next.js 静态导出（`out/`），数据全部存于 `data/*.json`，无数据库、无注册。
-- `app/[[...path]]/page.tsx` 是全站唯一路由分发；各栏目页面在 `components/sections/`（Home / About / Regions / Village / Person / Archives / Raw），通用组件在 `components/`，数据访问层是 `lib/data.ts`。
+- `app/[[...path]]/page.tsx` 是全站唯一路由分发；各栏目页面在 `components/sections/`（Home / About / Regions / Village / Person / Archives / Originals），通用组件在 `components/`，数据访问层是 `lib/data.ts`。
 - 原图（不可变）：`public/archives/<档案号>/originals/`；图式页与整本 PDF：同档案目录下 `typeset/` 与 `book.pdf`（生成物，随仓库提交）；派生图 `derived/` 与 `data/search-index.json` 为构建时生成，不入库（见 .gitignore）。
 
 ## 本地运行与发布
@@ -41,9 +41,9 @@ python scripts/build-book.py      # 整本 PDF（book.pdf；图表与上共用 d
 
 字体为 `scripts/fonts/` 的 Noto Serif SC 子集；若新数据或文案出现子集之外的汉字，先用完整字体按「两脚本＋全部 data」的字符并集重做子集（fonttools 的 pyftsubset），否则 PDF 会缺字。
 
-## 原图查看（/raw）
+## 原谱档案（/originals）
 
-`/raw/` 为原图查看入口（两级：先列档案，点入档案后才显示原图），站内无链接指向它；noindex、robots 禁抓、不进 sitemap。
+原图查看栏目名为「原谱档案」，地址 `/originals/`（两级：先列档案，点入档案后才显示原图，如 `/originals/a000100/`）。族谱档案目录页的图片网格下方有指向它的链接；除此之外不在导航出现。noindex、robots 禁抓、不进 sitemap。
 
 ## 当前状态（2026-11-12）
 
