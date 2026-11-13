@@ -36,7 +36,7 @@ export default function Village({ id }: { id: string }) {
       {v.id === 'v000100' && (
         <>
           <h2>寻根指南</h2>
-          <p><a href="/guides/enping-feng-roots/">恩平冯氏寻根指南：从南雄珠玑巷到良西镇小湴村</a></p>
+          <p><a href="/news/enping-feng-roots/">恩平冯氏寻根指南：从南雄珠玑巷到良西镇小湴村</a></p>
         </>
       )}
     </article>

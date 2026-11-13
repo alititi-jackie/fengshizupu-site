@@ -3,7 +3,7 @@ import { pages, persons, archives, regions, villages, sources, routes } from '..
 import Search from '../../components/Search';
 import Home from '../../components/sections/Home';
 import About from '../../components/sections/About';
-import GuideEnping from '../../components/sections/Guide';
+import { NewsIndex, NewsArticle, NEWS } from '../../components/sections/News';
 import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
@@ -22,12 +22,12 @@ function title(path: string[]) {
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
   if (path[0] === 'villages' && path[1]) return villages.find((x) => x.id === path[1])?.name || '村庄资料';
-  if (path[0] === 'guides') return '恩平冯氏寻根指南';
+  if (path[0] === 'news') return NEWS.find((x) => x.slug === path[1])?.title || '冯氏资讯';
   if (path[0] === 'archives' && path[1] && path.length === 2) return archives.find((x) => x.id === path[1])?.title || '族谱档案';
   if (path[0] === 'originals' && path[2] === 'changes') return '修改说明';
   if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
   if (path.length === 4) { const pg = pages.find((x) => x.id === path[3]); return pg ? `${pg.chartHeader} · 谱页 ${pg.sequence}` : '谱页'; }
-  return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案' } as Record<string, string>)[path[0]] || '冯氏族谱';
+  return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案', news: '冯氏资讯' } as Record<string, string>)[path[0]] || '冯氏族谱';
 }
 
 function description(path: string[]): string | undefined {
@@ -65,7 +65,8 @@ function description(path: string[]): string | undefined {
   }
   if (path[0] === 'archives') return '冯氏族谱收录的族谱档案目录：一册谱一个档案，含图式重排谱页与整版 PDF。';
   if (path[0] === 'search') return '按姓名或编号搜索冯氏族谱收录人物：输入姓名，或 p000001 式编号精确查找。';
-  if (path[0] === 'guides') return '恩平冯氏寻根指南：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。';
+  if (path[0] === 'news' && path.length === 1) return '冯氏资讯：冯氏宗亲新闻、本站动态与寻根指南——宗亲活动消息、新收录与更正公告、查谱方法与族谱知识。';
+  if (path[0] === 'news') return '恩平冯氏寻根指南：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。';
   return undefined;
 }
 
@@ -95,7 +96,8 @@ export default async function Page({ params }: Props) {
   if (!path.length) content = <Home />;
   else if (path[0] === 'search') content = <Search />;
   else if (path[0] === 'about') content = <About />;
-  else if (path[0] === 'guides') content = <GuideEnping />;
+  else if (path[0] === 'news' && path.length === 1) content = <NewsIndex />;
+  else if (path[0] === 'news') content = <NewsArticle slug={path[1]} />;
   else if (path[0] === 'regions' && path.length === 1) content = <RegionsIndex />;
   else if (path[0] === 'regions') content = <RegionDetail id={path[1]} />;
   else if (path[0] === 'villages') content = <Village id={path[1]} />;
@@ -110,7 +112,7 @@ export default async function Page({ params }: Props) {
     <>
       {path.length > 0 && (
         <>
-          <p className="crumb"><a href="/">首页</a> / {title(path)}</p>
+          <p className="crumb"><a href="/">首页</a> / {path[0] === 'news' && path.length === 2 ? <><a href="/news/">冯氏资讯</a> / </> : null}{title(path)}</p>
           <h1>{title(path)}</h1>
         </>
       )}
