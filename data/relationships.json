@@ -12032,5 +12032,16 @@
     ],
     "verification": "ai_draft",
     "notes": "第16页谱页父子连线转写草稿，待人工核对。"
+  },
+  {
+    "id": "rel001095",
+    "fromPersonId": "p000388",
+    "toPersonId": "p001133",
+    "type": "parent_child",
+    "evidencePageIds": [
+      "pg000002"
+    ],
+    "verification": "verified",
+    "notes": "宗亲补录：冯细城之女，排冯婉雯之后。"
   }
 ]

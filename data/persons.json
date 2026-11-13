@@ -5212,10 +5212,11 @@
   },
   {
     "id": "p000402",
-    "originalName": "冯婉伃",
-    "normalizedName": "冯婉伃",
+    "originalName": "冯婉怡",
+    "normalizedName": "冯婉怡",
     "aliases": [
-      "馮婉伃"
+      "馮婉怡",
+      "冯婉伃"
     ],
     "generationNumber": 28,
     "lineageId": null,
@@ -6064,7 +6065,7 @@
     "lineageId": null,
     "branchIds": [],
     "verification": "verified",
-    "notes": "据第4页原谱全页转写。配吴素琼（原谱载）；排行：次。"
+    "notes": "据第4页原谱全页转写。配吴苏琼（原谱作吴素琼）；排行：次。"
   },
   {
     "id": "p000468",
@@ -6094,10 +6095,11 @@
   },
   {
     "id": "p000470",
-    "originalName": "冯俊国",
-    "normalizedName": "冯俊国",
+    "originalName": "冯柱长",
+    "normalizedName": "冯柱长",
     "aliases": [
-      "馮俊國"
+      "馮柱長",
+      "冯俊国"
     ],
     "generationNumber": 27,
     "lineageId": null,
@@ -9037,7 +9039,7 @@
     "lineageId": null,
     "branchIds": [],
     "verification": "verified",
-    "notes": "据第21页原谱全页转写。配黎炳清（原谱载）；排行：六。"
+    "notes": "据第21页原谱全页转写。配黎炳青（原谱作黎炳清）；排行：六。"
   },
   {
     "id": "p000697",
@@ -9193,14 +9195,15 @@
     "lineageId": null,
     "branchIds": [],
     "verification": "verified",
-    "notes": "据第21页原谱全页转写。配梁礼敏（原谱载）。"
+    "notes": "据第21页原谱全页转写。配梁丽敏（原谱作梁礼敏）。"
   },
   {
     "id": "p000709",
-    "originalName": "冯小冰",
-    "normalizedName": "冯小冰",
+    "originalName": "冯少冰",
+    "normalizedName": "冯少冰",
     "aliases": [
-      "馮小冰"
+      "馮少冰",
+      "冯小冰"
     ],
     "generationNumber": 27,
     "lineageId": null,
@@ -9210,10 +9213,11 @@
   },
   {
     "id": "p000710",
-    "originalName": "冯小红",
-    "normalizedName": "冯小红",
+    "originalName": "冯少红",
+    "normalizedName": "冯少红",
     "aliases": [
-      "馮小紅"
+      "馮少紅",
+      "冯小红"
     ],
     "generationNumber": 27,
     "lineageId": null,
@@ -9754,10 +9758,11 @@
   },
   {
     "id": "p000752",
-    "originalName": "冯悦俊",
-    "normalizedName": "冯悦俊",
+    "originalName": "冯悦峻",
+    "normalizedName": "冯悦峻",
     "aliases": [
-      "馮悦俊"
+      "馮悅峻",
+      "冯悦俊"
     ],
     "generationNumber": 28,
     "lineageId": null,
@@ -14702,5 +14707,18 @@
     "branchIds": [],
     "verification": "verified",
     "notes": "据第16页原谱全页转写。女（原谱标「女」）。"
+  },
+  {
+    "id": "p001133",
+    "originalName": "冯婉仪",
+    "normalizedName": "冯婉仪",
+    "aliases": [
+      "馮婉儀"
+    ],
+    "generationNumber": 28,
+    "lineageId": null,
+    "branchIds": [],
+    "verification": "verified",
+    "notes": "冯细城之女，排冯婉雯之后。女（补录标「女」）。原谱未载，宗亲补录。"
   }
 ]
