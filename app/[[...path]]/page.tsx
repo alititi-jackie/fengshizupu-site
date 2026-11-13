@@ -3,6 +3,7 @@ import { pages, persons, archives, regions, villages, sources, routes } from '..
 import Search from '../../components/Search';
 import Home from '../../components/sections/Home';
 import About from '../../components/sections/About';
+import GuideEnping from '../../components/sections/Guide';
 import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
@@ -21,6 +22,7 @@ function title(path: string[]) {
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
   if (path[0] === 'villages' && path[1]) return villages.find((x) => x.id === path[1])?.name || '村庄资料';
+  if (path[0] === 'guides') return '恩平冯氏寻根指南';
   if (path[0] === 'archives' && path[1] && path.length === 2) return archives.find((x) => x.id === path[1])?.title || '族谱档案';
   if (path[0] === 'originals' && path[2] === 'changes') return '修改说明';
   if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
@@ -63,6 +65,7 @@ function description(path: string[]): string | undefined {
   }
   if (path[0] === 'archives') return '冯氏族谱收录的族谱档案目录：一册谱一个档案，含图式重排谱页与整版 PDF。';
   if (path[0] === 'search') return '按姓名或编号搜索冯氏族谱收录人物：输入姓名，或 p000001 式编号精确查找。';
+  if (path[0] === 'guides') return '恩平冯氏寻根指南：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。';
   return undefined;
 }
 
@@ -92,6 +95,7 @@ export default async function Page({ params }: Props) {
   if (!path.length) content = <Home />;
   else if (path[0] === 'search') content = <Search />;
   else if (path[0] === 'about') content = <About />;
+  else if (path[0] === 'guides') content = <GuideEnping />;
   else if (path[0] === 'regions' && path.length === 1) content = <RegionsIndex />;
   else if (path[0] === 'regions') content = <RegionDetail id={path[1]} />;
   else if (path[0] === 'villages') content = <Village id={path[1]} />;
