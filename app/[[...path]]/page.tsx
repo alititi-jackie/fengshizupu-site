@@ -7,7 +7,7 @@ import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
 import { ArchiveList, ArchiveCatalog, ArchivePageDetail } from '../../components/sections/Archives';
-import { OriginalsIndex, OriginalsArchive } from '../../components/sections/Originals';
+import { OriginalsIndex, OriginalsArchive, OriginalsChanges } from '../../components/sections/Originals';
 
 type Props = { params: Promise<{ path?: string[] }> };
 export const dynamicParams = false;
@@ -20,6 +20,7 @@ function title(path: string[]) {
   if (!path.length) return '寻根有据，世系有源';
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
+  if (path[0] === 'originals' && path[2] === 'changes') return '修改说明';
   if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
   if (path.length === 4) return `谱页 ${pages.find((x) => x.id === path[3])?.sequence || ''}`;
   return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案' } as Record<string, string>)[path[0]] || '冯氏族谱';
@@ -55,6 +56,7 @@ export default async function Page({ params }: Props) {
   else if (path[0] === 'persons') content = <Person id={path[1]} />;
   else if (path.length === 4) content = <ArchivePageDetail id={path[3]} />;
   else if (path[0] === 'originals' && path.length === 1) content = <OriginalsIndex />;
+  else if (path[0] === 'originals' && path[2] === 'changes') content = <OriginalsChanges id={path[1]} />;
   else if (path[0] === 'originals') content = <OriginalsArchive id={path[1]} />;
   else if (path.length === 1) content = <ArchiveList />;
   else content = <ArchiveCatalog id={path[1]} />;

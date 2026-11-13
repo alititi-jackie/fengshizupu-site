@@ -51,7 +51,7 @@ def gen_of(pid):
     return (persons[f]['generationNumber'] + 1) if f and persons[f]['generationNumber'] else 21
 
 def spouse_of(p):
-    m = re.search(r'配([^（；。]+)（原谱载）', p['notes'])
+    m = re.search(r'配([^（；。]+)（原谱', p['notes'])
     if m: return m.group(1).strip()
     m = re.search(r'配([^；。]+)', p['notes'])
     return m.group(1).strip()[:4] if m else ''
@@ -62,7 +62,7 @@ def circle_of(p):
 def marker_of(p):
     m = re.search(r'排行：([长次二三四五六七八九十])', p['notes'])
     rank = m.group(1) if m else ''
-    dau = '女' if '女（原谱标' in p['notes'] else ''
+    dau = '女' if re.search(r'女（(原谱|补录)标', p['notes']) else ''
     return (dau + rank) if dau else rank
 
 CN = {20:'廿',21:'廿一',22:'廿二',23:'廿三',24:'廿四',25:'廿五',26:'廿六',27:'廿七',28:'廿八',29:'廿九',30:'卅'}
