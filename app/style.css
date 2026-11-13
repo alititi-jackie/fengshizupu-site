@@ -4,3 +4,11 @@
 .nav-buttons button{width:44px;height:44px;padding:0;border-radius:50%;border:1px solid #e2e8f0;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#334155;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
 .nav-buttons button:hover{background:#f8fafc}
 @media(min-width:768px){.nav-buttons{bottom:24px;right:max(24px,calc((100vw - 1160px)/2 + 24px))}}
+.enping-card{display:flex;align-items:center;gap:22px;background:#fffdf7;border:1px solid #ded6c6;border-radius:12px;padding:22px 26px;margin:6px 0 24px;text-decoration:none;color:inherit}
+.enping-seal{flex:none;width:88px;height:88px;border-radius:12px;background:#742f32;color:#faf3e6;display:flex;align-items:center;justify-content:center;font:52px Georgia,'Songti SC',serif}
+.enping-body{display:flex;flex-direction:column;gap:2px;min-width:0}
+.enping-title{font-weight:700;font-size:25px;font-family:Georgia,'Songti SC',serif;color:#2b2320}
+.enping-motto{color:#966f3e;font-size:16px;letter-spacing:2px}
+.enping-intro{color:#5a5248;font-size:16.5px}
+.enping-btn{flex:none;margin-left:auto;background:#742f32;color:#fff;padding:11px 22px;border-radius:999px;font-size:17px}
+@media(max-width:650px){.enping-card{flex-wrap:wrap;gap:14px;padding:18px}.enping-seal{width:64px;height:64px;font-size:38px}.enping-btn{margin-left:0}}

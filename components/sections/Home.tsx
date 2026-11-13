@@ -12,6 +12,15 @@ export default function Home() {
           <button>查姓名 →</button>
         </form>
       </section>
+      <a className="enping-card" href="/enping-fengshi-juanshou.pdf" target="_blank" rel="noopener noreferrer">
+        <span className="enping-seal">冯</span>
+        <span className="enping-body">
+          <span className="enping-title">《恩平冯氏谱 · 卷首影印》</span>
+          <span className="enping-motto">始平世泽 · 大树家声</span>
+          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影，共 17 页（1995 年脱稿付梓）</span>
+        </span>
+        <span className="enping-btn">查看 PDF</span>
+      </a>
       <div className="grid">
         <article>
           <h2>族谱档案</h2>
