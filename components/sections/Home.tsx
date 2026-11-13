@@ -7,8 +7,8 @@ export default function Home() {
         <p className="eyebrow">全国冯氏宗亲 · 数字族谱档案</p>
         <h1>寻根有据，<br />世系有源。</h1>
         <p>从一页家谱，读懂一家人的来处。留存珍贵原谱，让宗亲记忆代代相传。</p>
-        <form action="/search/">
-          <input name="q" aria-label="查找姓名或编号" placeholder="输入姓名或编号，寻找原谱中的亲人" />
+        <form className="hero-search" action="/search/">
+          <input name="q" aria-label="查找姓名或编号" placeholder="输入姓名或编号" />
           <button>查姓名 →</button>
         </form>
       </section>
@@ -17,7 +17,7 @@ export default function Home() {
         <span className="enping-body">
           <span className="enping-title">《恩平冯氏谱 · 卷首影印》</span>
           <span className="enping-motto">始平世泽 · 大树家声</span>
-          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影，共 17 页（1995 年脱稿付梓）</span>
+          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影<span className="enping-more">　查看 PDF ›</span></span>
         </span>
         <span className="enping-btn">查看 PDF</span>
       </a>

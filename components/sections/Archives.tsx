@@ -1,5 +1,6 @@
 import { archives, pages, persons, sources, villages, pageUrl } from '../../lib/data';
 import Viewer from '../Viewer';
+import ArchiveSearch from '../ArchiveSearch';
 
 export function ArchiveList() {
   return (
@@ -27,6 +28,7 @@ export function ArchiveCatalog({ id }: { id: string }) {
           <a key={vid} href={`/villages/${vid}/`}>查看村庄资料：{villages.find((v) => v.id === vid)?.name} </a>
         ))}
       </p>
+      <ArchiveSearch archiveId={a.id} />
       <div className="grid">
         {list.map((p) => (
           <a className="card" key={p.id} href={pageUrl(p.id, a.id)}>
