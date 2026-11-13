@@ -21,7 +21,7 @@ export function ArchiveCatalog({ id }: { id: string }) {
     <>
       <p>{a.source}</p>
       <p className="notice">本档案共 {list.length} 页，为按原谱版式重排的图式页。点开任意一页可放大查看、下载单页 PDF；整版 PDF 可一次下载全册。</p>
-      <p><a className="button" href={`/archives/${a.id}/book.pdf`} download>下载整版 PDF</a></p>
+      <p><a className="button" href={`/archives/${a.id}/book.pdf`} target="_blank" rel="noopener noreferrer">查看整版 PDF</a></p>
       <p>
         {a.villageIds.map((vid) => (
           <a key={vid} href={`/villages/${vid}/`}>查看村庄资料：{villages.find((v) => v.id === vid)?.name} </a>
