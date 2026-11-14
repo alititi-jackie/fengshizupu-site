@@ -19,15 +19,6 @@ export default function GuideEnping() {
         <li>祖籍：广东省江门市恩平市良西镇雁鹅村委会小湴村</li>
         <li>房支：凝斋房（十房见上文）</li>
         <li>本站入口：<a href="/">fengshizupu.com 首页</a>，村庄页 <a href="/villages/v000100/">小湴村</a></li>
-        <li>对照谱书：1989 年《冯姓族谱》与《恩平冯氏族谱》（云家谱网著录 1999 年，书内自述 1995 年脱稿）只有目录著录与付费电子版，未经授权不得转载全文；后者的卷首影印见上文链接。</li>
-      </ul>
-      <h2>来源</h2>
-      <ul>
-        <li>江门日报《恩平市牛江镇莲塘村》（2022-07-03）：<a href="http://dzb.jmrb.com:8090/jmrb/html/2022-07/03/content_651068.htm" target="_blank" rel="noopener noreferrer">dzb.jmrb.com</a></li>
-        <li>中国家谱网冯氏目录（188 部）：<a href="https://www.jiapu.tv/x/54/" target="_blank" rel="noopener noreferrer">jiapu.tv</a></li>
-        <li>My China Roots 冯姓页（110 部全文影像）：<a href="https://www.mychinaroots.com/surnames/detail?word=%E5%86%AF" target="_blank" rel="noopener noreferrer">mychinaroots.com</a></li>
-        <li>云家谱网《恩平冯氏族谱》商品页（付费电子版）：<a href="https://www.yunjiapu.com/goods/detail/586630.html" target="_blank" rel="noopener noreferrer">yunjiapu.com</a></li>
-        <li>本站族谱数据：fengshizupu.com（27 页、1133 人、十房世系）</li>
       </ul>
     </article>
   );
