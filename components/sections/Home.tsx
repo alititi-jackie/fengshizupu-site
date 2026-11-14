@@ -31,6 +31,15 @@ export default function Home() {
           </p>
         ))}
       </section>
+      <a className="enping-card" href="https://enping.fengshizupu.com" target="_blank" rel="noopener noreferrer">
+        <span className="enping-seal">冯</span>
+        <span className="enping-body">
+          <span className="enping-title">《恩平冯氏族谱》全书在线查阅</span>
+          <span className="enping-motto">寻根溯源 · 世系传承</span>
+          <span className="enping-intro">恩平冯氏总谱全书 1,269 页逐页看图，可按房支、村庄查找<span className="enping-more">　去看全书 ›</span></span>
+        </span>
+        <span className="enping-btn">看全书</span>
+      </a>
       <div className="grid">
         <article>
           <h2>族谱档案</h2>
