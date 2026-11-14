@@ -1,4 +1,10 @@
 import { fengLinks } from './fengLinks';
+import { NEWS } from './News';
+
+function fmtDate(d: string) {
+  const [y, m, dd] = d.split('-');
+  return `${y} 年 ${Number(m)} 月 ${Number(dd)} 日`;
+}
 
 export default function Home() {
   return (
@@ -12,15 +18,19 @@ export default function Home() {
           <button>查姓名 →</button>
         </form>
       </section>
-      <a className="enping-card" href="/enping-fengshi-juanshou.pdf" target="_blank" rel="noopener noreferrer">
-        <span className="enping-seal">冯</span>
-        <span className="enping-body">
-          <span className="enping-title">《恩平冯氏谱 · 卷首影印》</span>
-          <span className="enping-motto">始平世泽 · 大树家声</span>
-          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影<span className="enping-more">　查看 PDF ›</span></span>
-        </span>
-        <span className="enping-btn">查看 PDF</span>
-      </a>
+      <section className="home-news">
+        <div className="home-news-head">
+          <h2>冯氏资讯</h2>
+          <a href="/news/">全部资讯 ›</a>
+        </div>
+        {NEWS.slice(0, 2).map((n) => (
+          <p className="home-news-item" key={n.slug}>
+            <span className="badge">{n.tag}</span>{' '}
+            <a href={`/news/${n.slug}/`}>{n.title}</a>{' '}
+            <small>{fmtDate(n.date)}</small>
+          </p>
+        ))}
+      </section>
       <div className="grid">
         <article>
           <h2>族谱档案</h2>
@@ -46,6 +56,15 @@ export default function Home() {
           </ul>
         </section>
       )}
+      <a className="enping-card" href="/enping-fengshi-juanshou.pdf" target="_blank" rel="noopener noreferrer">
+        <span className="enping-seal">冯</span>
+        <span className="enping-body">
+          <span className="enping-title">《恩平冯氏谱 · 卷首影印》</span>
+          <span className="enping-motto">始平世泽 · 大树家声</span>
+          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影<span className="enping-more">　查看 PDF ›</span></span>
+        </span>
+        <span className="enping-btn">查看 PDF</span>
+      </a>
     </>
   );
 }
