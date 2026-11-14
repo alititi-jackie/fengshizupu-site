@@ -66,6 +66,7 @@ function description(path: string[]): string | undefined {
   if (path[0] === 'archives') return '冯氏族谱收录的族谱档案目录：一册谱一个档案，含图式重排谱页与整版 PDF。';
   if (path[0] === 'search') return '按姓名或编号搜索冯氏族谱收录人物：输入姓名，或 p000001 式编号精确查找。';
   if (path[0] === 'news' && path.length === 1) return '冯氏资讯：冯氏宗亲新闻、本站动态与寻根指南——宗亲活动消息、新收录与更正公告、查谱方法与族谱知识。';
+  if (path[0] === 'news' && path[1] === 'feng-surname-origin') return '冯姓的来源：姬姓一支由毕公高、毕万而下，支孙冯文孙受封冯城、以邑为氏；归姓一支始于郑大夫冯简子，两源并列。附订正简图，并考冯奉世、冯异两汉望族与始平、上党、颍川等郡望、堂联出处。';
   if (path[0] === 'news') return '恩平冯氏寻根指南：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。';
   return undefined;
 }
