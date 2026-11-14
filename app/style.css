@@ -24,3 +24,9 @@
 .archive-search input{flex:1 1 auto;min-width:0}
 .archive-search button{flex:none}
 @media(max-width:650px){.enping-card{flex-wrap:nowrap;align-items:flex-start;gap:14px;padding:16px 18px}.enping-seal{width:52px;height:52px;font-size:30px;border-radius:10px}.enping-title{font-size:20px}.enping-motto{font-size:14px}.enping-intro{font-size:15px}.enping-btn{display:none}.enping-more{display:inline;color:#742f32;font-weight:600}.mainnav-in{padding:0 18px;gap:19px;height:44px;font-size:16px}}
+
+.tallimg{display:block;position:relative;max-height:560px;overflow:hidden;border-radius:10px}
+.tallimg img{display:block;width:100%;height:auto}
+.tallimg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(rgba(247,243,234,0),rgba(247,243,234,.96));pointer-events:none}
+.tallimg-tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#742f32;color:#fff8ee;padding:8px 20px;border-radius:999px;font-size:15px;font-weight:600;white-space:nowrap;z-index:1;box-shadow:0 2px 8px rgba(60,30,20,.25)}
+@media(max-width:650px){.tallimg{max-height:430px}}

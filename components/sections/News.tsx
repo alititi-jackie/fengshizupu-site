@@ -50,7 +50,7 @@ function ArticleFengOrigin() {
   return (
     <article>
       <p>网上流传不少「冯氏来源」图，有的把不同源头、不同支系的人物排成一条直线，容易看混。本站据《元和姓纂》《通志 · 氏族略》《世本》等姓氏典籍，把冯姓的源流理成四段，并配简图一幅。</p>
-      <p><img src="/news/feng-surname-origin.png" alt="冯氏来源简图：姬姓正宗由毕公高、毕万到冯文孙受封冯城以邑为氏；归姓一支始于郑大夫冯简子；两汉望族冯奉世（上党）、冯异（颍川）并列；堂联始平世泽、大树家声" width="1080" height="2068" /></p>
+      <p><a className="tallimg" href="/news/feng-surname-origin.png" target="_blank" rel="noopener noreferrer"><img src="/news/feng-surname-origin.png" alt="冯氏来源简图：姬姓正宗由毕公高、毕万到冯文孙受封冯城以邑为氏；归姓一支始于郑大夫冯简子；两汉望族冯奉世（上党）、冯异（颍川）并列；堂联始平世泽、大树家声" width="1080" height="2068" /><span className="tallimg-tip">点击查看完整大图 ›</span></a></p>
       <h2>一、姬姓正宗：得姓于冯城</h2>
       <p>冯姓的主流源头出于姬姓。周文王第十五子毕公高受封于毕，他的后裔毕万在晋国为大夫，受封魏地，是魏氏的始祖。毕万的一支后孙——姓氏书称冯文孙，又称魏长卿——受封于冯城，子孙以邑为氏，改姓冯。冯城故址，一说在今河南荥阳，一说在今陕西大荔。这一支史称冯氏正宗，冯文孙被后世尊为冯姓的得姓始祖。</p>
       <h2>二、归姓一支：郑大夫冯简子</h2>
@@ -68,7 +68,7 @@ function ArticleEnpingGenerations() {
   return (
     <article>
       <p>恩平冯氏排世系，通常两套编号并行：一套从岭南始祖冯业往下排，另一套以复春、万辅、宁邦为各房「一世」。查自家辈分时，先认支房和起算标准，不然同一位祖先，在两本书里的世数能差出二十世。</p>
-      <p><img src="/news/enping-feng-generations.png" alt="恩平冯氏世系排法简图：广东总世系与本房世系两套编号，总世系主干冯业、大郎公、玄英公、黼公到复春公，复春、万辅、宁邦三大房，以及复春房朝珍一支与梨园岳孔房字辈" width="1080" height="3060" /></p>
+      <p><a className="tallimg" href="/news/enping-feng-generations.png" target="_blank" rel="noopener noreferrer"><img src="/news/enping-feng-generations.png" alt="恩平冯氏世系排法简图：广东总世系与本房世系两套编号，总世系主干冯业、大郎公、玄英公、黼公到复春公，复春、万辅、宁邦三大房，以及复春房朝珍一支与梨园岳孔房字辈" width="1080" height="3060" /><span className="tallimg-tip">点击查看完整大图 ›</span></a></p>
       <h2>一、总世系主干</h2>
       <p>按《恩平冯氏族谱》及古驿谱材料，主线可排为：冯业 → …… → 大郎公 → 玄英公 → 黼公（宁瑞）→ 复春公（灏）。其中复春公被奉为恩平复春房一世祖。部分考证把复春列作广东冯氏二十三世，但各谱总世系口径有差异，看谱时以该谱自己的凡例为准。</p>
       <h2>二、三大房的排列方式</h2>
