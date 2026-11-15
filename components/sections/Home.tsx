@@ -1,3 +1,4 @@
+import { SearchField, SearchSubmit, SITE_SEARCH_HINT } from '../SearchField';
 import { fengLinks } from './fengLinks';
 import { NEWS } from './News';
 
@@ -14,8 +15,8 @@ export default function Home() {
         <h1>寻根有据，<br />世系有源。</h1>
         <p>从一页家谱，读懂一家人的来处。留存珍贵原谱，让宗亲记忆代代相传。</p>
         <form className="hero-search" action="/search/">
-          <input name="q" aria-label="输入姓名、村名、地名、房名或编号" placeholder="输入姓名、村名、房名或编号" />
-          <button>搜索</button>
+          <SearchField name="q" aria-label="输入姓名、村名、地名、房名或编号" placeholder={SITE_SEARCH_HINT} />
+          <SearchSubmit />
         </form>
       </section>
       <section className="home-news">

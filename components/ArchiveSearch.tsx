@@ -1,29 +1,20 @@
 'use client';
+import { SearchField, SearchSubmit } from './SearchField';
 import { useState } from 'react';
 import PersonSearchResult from './PersonSearchResult';
-import index from '../data/search-index.json';
+import { searchPeople } from '../lib/person-search';
 import archives from '../data/archives.json';
 
 export default function ArchiveSearch({ archiveId, showHeading = true }: { archiveId: string; showHeading?: boolean }) {
   const [q, setQ] = useState('');
-  const norm = (s: string) => s.normalize('NFKC').replaceAll('馮', '冯').trim();
-  const qc = norm(q).replace(/\s+/g, '').toLowerCase();
-  const idm = /^p?(\d+)$/.exec(qc);
-  const idNum = idm ? parseInt(idm[1], 10) : null;
   const title = archives.find((a) => a.id === archiveId)?.title || '';
-  const results = q
-    ? index.filter(
-        (p) =>
-          p.archiveIds.includes(archiveId) &&
-          (idNum !== null ? parseInt(p.id.slice(1), 10) === idNum : p.names.some((n) => norm(n).includes(norm(q)))),
-      )
-    : [];
+  const results = q.trim() ? searchPeople(q, archiveId) : [];
   return (
     <section aria-label="在本档案中查姓名">
       {showHeading && <h2>在本档案中查姓名</h2>}
       <form className="archive-search" onSubmit={(e) => e.preventDefault()}>
-        <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="输入姓名或编号" aria-label="输入姓名或编号" />
-        <button type="submit">搜索</button>
+        <SearchField value={q} onChange={(e) => setQ(e.target.value)} placeholder="输入姓名或编号" aria-label="输入姓名或编号" />
+        <SearchSubmit />
       </form>
       {q && <p role="status">在{title}中找到 {results.length} 条记录</p>}
       {q &&

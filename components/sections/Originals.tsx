@@ -1,3 +1,4 @@
+import ArchivePageCard from '../ArchivePageCard';
 import { archives, pages } from '../../lib/data';
 
 // /originals/ 第一级（原谱档案）：只列档案入口，不直接显示原图
@@ -58,10 +59,8 @@ export function OriginalsArchive({ id }: { id: string }) {
       <p>本档案原图之后的更正记录见 <a href={`/originals/${a.id}/changes/`}>修改说明</a>。</p>
       <div className="grid">
         {pages.filter((p) => p.archiveId === a.id).map((p) => (
-          <a className="card" key={p.id} href={p.imagePath}>
-            <img src={`/archives/${a.id}/derived/${p.id}-thumb.jpg`} alt={`原图第${p.sequence}张预览`} loading="lazy" width="240" height="320" />
-            第 {p.sequence} 张 · 原印 {p.printedPageLabel}
-          </a>
+          <ArchivePageCard key={p.id} href={p.imagePath} src={`/archives/${a.id}/derived/${p.id}-thumb.jpg`}
+            alt={`原图第${p.sequence}张预览`} sequence={p.sequence} printedPage={p.printedPageLabel} />
         ))}
       </div>
     </section>

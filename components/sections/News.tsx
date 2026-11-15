@@ -1,3 +1,4 @@
+import type { ComponentType, ReactNode } from 'react';
 import { fengNews } from '../../lib/feng-news';
 import PageImage from '../PageImage';
 import GuideEnping from './Guide';
@@ -144,28 +145,52 @@ function RelatedReading({ slug }: { slug: string }) {
   );
 }
 
+const legacyArticles: Partial<Record<string, ComponentType>> = {
+  'enping-feng-roots': GuideEnping,
+  'feng-surname-origin': ArticleFengOrigin,
+  'enping-feng-generations': ArticleEnpingGenerations,
+};
+
 export function NewsArticle({ slug }: { slug: string }) {
-  const n = NEWS.find((x) => x.slug === slug);
+  const entry = NEWS.find((item) => item.slug === slug);
+  if (!entry) return null;
+
   const feature = fengNews.find((item) => item.slug === slug);
+  const Body = legacyArticles[slug];
+  return (
+    <NewsArticleLayout entry={entry} references={feature?.references}>
+      {feature && (
+        <>
+          <PageImage croppedPreview src={`/news/${feature.slug}.webp`} alt={feature.cover.join('。')}
+            caption={feature.cover[0]} width={1080} height={650} />
+          {feature.sections.map(([heading, text]) => (
+            <section key={heading}><h2>{heading}</h2><p>{text}</p></section>
+          ))}
+        </>
+      )}
+      {Body && <Body />}
+    </NewsArticleLayout>
+  );
+}
+
+function NewsArticleLayout({ entry, references, children }: {
+  entry: NewsItem;
+  references?: string[][];
+  children: ReactNode;
+}) {
   return (
     <>
-      {n && (
-        <p><span className="badge">{n.tag}</span> <small>{fmtDate(n.date)}</small></p>
-      )}
-      {feature && (
-        <article>
-          <PageImage croppedPreview src={`/news/${feature.slug}.webp`} alt={feature.cover.join('。')} caption={feature.cover[0]} width={1080} height={650} />
-          {feature.sections.map(([heading, body]) => (
-            <section key={heading}><h2>{heading}</h2><p>{body}</p></section>
-          ))}
+      <p><span className="badge">{entry.tag}</span> <small>{fmtDate(entry.date)}</small></p>
+      {children}
+      {references && (
+        <section>
           <h2>资料出处</h2>
-          <ul>{feature.references.filter(([, href]) => href !== 'https://enping.fengshizupu.com/').map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
-        </article>
+          <ul>{references.filter(([, href]) => href !== 'https://enping.fengshizupu.com/').map(([label, href]) => (
+            <li key={href}><a href={href}>{label}</a></li>
+          ))}</ul>
+        </section>
       )}
-      {slug === 'enping-feng-roots' ? <GuideEnping /> : null}
-      {slug === 'feng-surname-origin' ? <ArticleFengOrigin /> : null}
-      {slug === 'enping-feng-generations' ? <ArticleEnpingGenerations /> : null}
-      <RelatedReading slug={slug} />
+      <RelatedReading slug={entry.slug} />
     </>
   );
 }

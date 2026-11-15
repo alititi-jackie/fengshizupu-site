@@ -1,4 +1,5 @@
 'use client';
+import ReadingImageDialog from './ReadingImageDialog';
 import { useRef, useState } from 'react';
 
 export default function PageImage({ src, alt, caption, width = 1241, height = 1754, croppedPreview = false }: { src: string; alt: string; caption: string; width?: number; height?: number; croppedPreview?: boolean }) {
@@ -17,20 +18,8 @@ export default function PageImage({ src, alt, caption, width = 1241, height = 17
         </button>
         {!croppedPreview && <figcaption>{caption} · 点击图片可放大查看</figcaption>}
       </figure>
-      <dialog className="pagezoom-dialog" ref={dialog} aria-label={`${alt}放大阅览`}>
-        <div className="pagezoom-toolbar">
-          <span>{caption}</span>
-          <button type="button" onClick={() => setZoomed(!zoomed)}>
-            {zoomed ? '适合屏幕' : '放大查看'}
-          </button>
-          <button type="button" onClick={() => dialog.current?.close()}>
-            关闭
-          </button>
-        </div>
-        <div className="pagezoom-zoom">
-          <img src={src} alt={alt} className={zoomed ? 'is-zoomed' : ''} />
-        </div>
-      </dialog>
+      <ReadingImageDialog dialog={dialog} src={src} alt={alt} label={caption}
+        zoomed={zoomed} toggleZoom={() => setZoomed((value) => !value)} />
     </>
   );
 }

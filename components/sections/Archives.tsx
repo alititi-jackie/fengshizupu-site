@@ -1,3 +1,4 @@
+import ArchivePageCard from '../ArchivePageCard';
 import { archives, pages, persons, sources, villages, pageUrl, bookIndexPages } from '../../lib/data';
 import PageImage from '../PageImage';
 import ArchiveSearch from '../ArchiveSearch';
@@ -32,11 +33,8 @@ export function ArchiveCatalog({ id }: { id: string }) {
       <ArchiveSearch archiveId={a.id} />
       <div className="grid">
         {list.map((p) => (
-          <a className="card" key={p.id} href={pageUrl(p.id, a.id)}>
-            <img src={`/archives/${a.id}/typeset/${p.id}.jpg`} alt={`谱页第${p.sequence}张预览`} loading="lazy" width="240" height="320" />
-            第 {p.sequence} 张 · 原印 {p.printedPageLabel}
-            <small style={{ display: 'block' }}>{p.id}</small>
-          </a>
+          <ArchivePageCard key={p.id} href={pageUrl(p.id, a.id)} src={`/archives/${a.id}/typeset/${p.id}.jpg`}
+            alt={`谱页第${p.sequence}张预览`} sequence={p.sequence} printedPage={p.printedPageLabel} pageId={p.id} />
         ))}
       </div>
       <p><a href={`/originals/${a.id}/`}>原谱档案 →</a></p>
