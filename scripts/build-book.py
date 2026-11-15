@@ -24,7 +24,7 @@ _spec.loader.exec_module(bt)
 
 persons, father, pageof, pages_meta = bt.persons, bt.father, bt.pageof, bt.pages_meta
 gen_of, gen_label, brand = bt.gen_of, bt.gen_label, bt.brand
-W, H, L = bt.W, bt.H, bt.L
+W, H, L, R = bt.W, bt.H, bt.L, bt.R
 
 
 def branch_of(pid):
@@ -33,6 +33,29 @@ def branch_of(pid):
         seen.add(cur)
         cur = father[cur]
     return persons[cur]['normalizedName'].replace('冯', '', 1)
+
+
+from reportlab.pdfbase.pdfmetrics import stringWidth
+
+NO_START = '，。；：、！？）」』…'
+
+
+def wrap_text(text, size=11.5, maxw=None, indent='　　'):
+    """Wrap one paragraph to the book's text width (W - L - R) by measured
+    string width; continuation lines get a two-space hanging indent and
+    closing punctuation never starts a line."""
+    if maxw is None:
+        maxw = W - L - R
+    lines, cur = [], ''
+    for ch in text:
+        if cur and stringWidth(cur + ch, 'Serif', size) > maxw and ch not in NO_START:
+            lines.append(cur)
+            cur = indent + ch
+        else:
+            cur += ch
+    if cur:
+        lines.append(cur)
+    return lines
 
 
 def text_page_lines(c, title, lines, size=11.5, leading=21, x=L, ytop=780):
@@ -67,25 +90,19 @@ def main():
     c.drawCentredString(W / 2, 300, '二〇二六年十一月')
     c.showPage()
     # 凡例
-    fanli = [
-        '一、本书据小湴村凝斋房原谱二十七页影像逐页转录重排，',
-        '　　分页、页序、人名顺序均依原谱；版式仿原谱世系图：',
-        '　　页眉房名，右侧世系，世代自上而下，父子以线相连。',
-        '',
-        '二、人名已经原谱逐一核对；个别列距经规整，与原印刷',
-        '　　页或有细微出入，世系与文字以转录数据为准。',
-        '',
-        '三、父子连线为识读所得，尚未经宗亲逐一核校，凡有疑',
-        '　　义之处，条目版备注中均有注明，请对照原谱核正。',
-        '',
-        '四、人名左侧小字为配偶（如「唐氏」）；人名上方小字',
-        '　　为排行（长、次、三……），原谱标「女」者为女儿。',
-        '',
-        '五、每人均有编号（p000001 起），与网站 fengshizupu.com',
-        '　　及条目版相对应；书末附全名索引，按编号查检。',
-        '',
+    fanli_paras = [
+        '一、本书据小湴村凝斋房原谱二十七页影像逐页转录重排，分页、页序、人名顺序均依原谱；版式仿原谱世系图：页眉房名，右侧世系，世代自上而下，父子以线相连。',
+        '二、人名已经原谱逐一核对；个别列距经规整，与原印刷页或有细微出入，世系与文字以转录数据为准。',
+        '三、父子连线为识读所得，尚未经宗亲逐一核校，凡有疑义之处，条目版备注中均有注明，请对照原谱核正。',
+        '四、人名左侧小字为配偶（如「唐氏」）；人名上方小字为排行（长、次、三……），原谱标「女」者为女儿。',
+        '五、每人均有编号（p000001 起），与网站 fengshizupu.com 及条目版相对应；书末附全名索引，按编号查检。',
         '六、本书与条目版同源生成，增补修订后可重新出书。',
     ]
+    fanli = []
+    for para in fanli_paras:
+        fanli += wrap_text(para) + ['']
+    if fanli and fanli[-1] == '':
+        fanli.pop()
     text_page_lines(c, '凡　例', fanli)
     total = 0
     for pgid in sorted(pages_meta, key=lambda p: pages_meta[p]['sequence']):
