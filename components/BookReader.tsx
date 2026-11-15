@@ -13,7 +13,7 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
     const q = parseInt(new URLSearchParams(location.search).get('p') || '', 10);
     if (q >= 1 && q <= total) setCur(q - 1);
     try {
-      if (localStorage.getItem('bookReaderMode') === 'scroll') setMode('scroll');
+      if (localStorage.getItem('bookReaderMode') !== 'single') setMode('scroll');
     } catch {}
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
