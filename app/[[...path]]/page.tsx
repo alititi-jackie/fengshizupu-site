@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { pages, persons, archives, regions, villages, sources, routes } from '../../lib/data';
+import { pages, persons, archives, regions, villages, sources, routes, bookIndexPages } from '../../lib/data';
 import EnpingJuanshou from '../../components/sections/EnpingJuanshou';
 import Search from '../../components/Search';
 import Home from '../../components/sections/Home';
@@ -8,7 +8,7 @@ import { NewsIndex, NewsArticle, NEWS } from '../../components/sections/News';
 import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
-import { ArchiveList, ArchiveCatalog, ArchivePageDetail } from '../../components/sections/Archives';
+import { ArchiveList, ArchiveCatalog, ArchivePageDetail, ArchiveReader } from '../../components/sections/Archives';
 import { OriginalsIndex, OriginalsArchive, OriginalsChanges } from '../../components/sections/Originals';
 
 type Props = { params: Promise<{ path?: string[] }> };
@@ -25,6 +25,7 @@ function title(path: string[]) {
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
   if (path[0] === 'villages' && path[1]) return villages.find((x) => x.id === path[1])?.name || '村庄资料';
   if (path[0] === 'news') return NEWS.find((x) => x.slug === path[1])?.title || '冯氏资讯';
+  if (path[0] === 'archives' && path[2] === 'read') return `${archives.find((x) => x.id === path[1])?.title || '族谱档案'} · 整版阅览`;
   if (path[0] === 'archives' && path[1] && path.length === 2) return archives.find((x) => x.id === path[1])?.title || '族谱档案';
   if (path[0] === 'originals' && path[2] === 'changes') return '修改说明';
   if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
@@ -56,11 +57,18 @@ function description(path: string[]): string | undefined {
     return r ? `${r.name}：冯氏族谱地区目录，下辖地区、村庄与人物世系。` : undefined;
   }
   if (path[0] === 'regions') return '按省、市、县、镇、村委会逐级浏览冯氏族谱收录的地区与村庄目录。';
+  if (path[0] === 'archives' && path[2] === 'read') {
+    const a = archives.find((x) => x.id === path[1]);
+    if (!a) return undefined;
+    const n = pages.filter((x) => x.archiveId === a.id).length;
+    const total = n + 2 + (bookIndexPages[a.id] || 0);
+    return `${a.title}整版阅览：全书共 ${total} 页（封面、凡例、图式谱页 ${n} 页、全名索引），可单页翻看或连看，也可下载整版 PDF。`;
+  }
   if (path[0] === 'archives' && path[1] && path.length === 2) {
     const a = archives.find((x) => x.id === path[1]);
     if (!a) return undefined;
     const n = pages.filter((x) => x.archiveId === a.id).length;
-    return `${a.title}族谱档案：据原谱整理重排的图式谱页共 ${n} 页，可逐页查阅或查看整版 PDF。`;
+    return `${a.title}族谱档案：据原谱整理重排的图式谱页共 ${n} 页，可逐页查阅、整版阅览或下载整版 PDF。`;
   }
   if (path[0] === 'archives' && path.length === 4) {
     const pg = pages.find((x) => x.id === path[3]);
@@ -108,6 +116,7 @@ export default async function Page({ params }: Props) {
   else if (path[0] === 'regions') content = <RegionDetail id={path[1]} />;
   else if (path[0] === 'villages') content = <Village id={path[1]} />;
   else if (path[0] === 'persons') content = <Person id={path[1]} />;
+  else if (path[0] === 'archives' && path[2] === 'read') content = <ArchiveReader id={path[1]} />;
   else if (path.length === 4) content = <ArchivePageDetail id={path[3]} />;
   else if (path[0] === 'originals' && path.length === 1) content = <OriginalsIndex />;
   else if (path[0] === 'originals' && path[2] === 'changes') content = <OriginalsChanges id={path[1]} />;

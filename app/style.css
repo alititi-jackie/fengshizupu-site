@@ -54,3 +54,16 @@
 .juanshou-zoom{height:calc(100% - 64px);overflow:auto;overscroll-behavior:contain}
 .juanshou-zoom img{display:block;max-width:100%;width:auto;height:auto;max-height:100%;margin:auto}
 .juanshou-zoom img.is-zoomed{max-width:none;max-height:none;width:1509px;height:auto;margin:0 auto}
+
+.bookreader .br-page{margin:0 0 22px}
+.bookreader .br-page img{display:block;width:100%;height:auto;background:#fff;border:1px solid #ded6c6}
+.bookreader figcaption{text-align:center;color:#68675e;font-size:15px;margin-top:8px}
+.br-single .br-page{display:none}
+.br-single .br-page.cur{display:block}
+.br-scroll .br-page{scroll-margin-top:118px}
+.br-scroll .br-bar{position:sticky;top:48px;z-index:30;background:#f7f4ec;padding:8px 0}
+.br-modes{display:inline-flex;gap:8px}
+.br-modes button{background:#fffdf7;color:#742f32;border:1px solid #bdb4a3}
+.br-modes button.on{background:#742f32;color:#fff}
+.br-nav{justify-content:space-between}
+@media(max-width:650px){.br-scroll .br-bar{top:44px}.br-scroll .br-page{scroll-margin-top:150px}}

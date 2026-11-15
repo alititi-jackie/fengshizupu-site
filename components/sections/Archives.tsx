@@ -1,6 +1,7 @@
-import { archives, pages, persons, sources, villages, pageUrl } from '../../lib/data';
+import { archives, pages, persons, sources, villages, pageUrl, bookIndexPages } from '../../lib/data';
 import Viewer from '../Viewer';
 import ArchiveSearch from '../ArchiveSearch';
+import BookReader, { type BookItem } from '../BookReader';
 
 export function ArchiveList() {
   return (
@@ -21,8 +22,8 @@ export function ArchiveCatalog({ id }: { id: string }) {
   return (
     <>
       <p>{a.source}</p>
-      <p className="notice">本档案共 {list.length} 页，为按原谱版式重排的图式页。点开任意一页可放大查看、下载单页 PDF；整版 PDF 可一次下载全册。</p>
-      <p><a className="button" href={`/archives/${a.id}/book.pdf`} target="_blank" rel="noopener noreferrer">查看整版 PDF</a></p>
+      <p className="notice">本档案共 {list.length} 页，为按原谱版式重排的图式页。点开任意一页可放大查看、下载单页 PDF；整版可在线阅览，也可下载整版 PDF 一次看全册。</p>
+      <p className="controls"><a className="button" href={`/archives/${a.id}/read/`}>整版阅览</a><a className="button" href={`/archives/${a.id}/book.pdf`} download>下载整版 PDF</a></p>
       <p>
         {a.villageIds.map((vid) => (
           <a key={vid} href={`/villages/${vid}/`}>查看村庄资料：{villages.find((v) => v.id === vid)?.name} </a>
@@ -39,6 +40,35 @@ export function ArchiveCatalog({ id }: { id: string }) {
         ))}
       </div>
       <p><a href={`/originals/${a.id}/`}>原谱档案 →</a></p>
+    </>
+  );
+}
+
+export function ArchiveReader({ id }: { id: string }) {
+  const a = archives.find((x) => x.id === id)!;
+  const list = pages.filter((p) => p.archiveId === a.id);
+  const indexCount = bookIndexPages[a.id] || 0;
+  const items: BookItem[] = [
+    { src: `/archives/${a.id}/bookpages/cover.webp`, label: '封面', alt: `${a.title}族谱封面` },
+    { src: `/archives/${a.id}/bookpages/fanli.webp`, label: '凡例', alt: `${a.title}族谱凡例` },
+    ...list.map((p) => ({
+      src: `/archives/${a.id}/typeset/${p.id}.jpg`,
+      label: `世系图第 ${p.sequence} 张 · 原印 ${p.printedPageLabel}`,
+      alt: `${p.chartHeader}世系图（谱页第 ${p.sequence} 张）`,
+    })),
+    ...Array.from({ length: indexCount }, (_, i) => ({
+      src: `/archives/${a.id}/bookpages/index-${i + 1}.webp`,
+      label: `全名索引（${i + 1}/${indexCount}）`,
+      alt: `${a.title}全名索引第 ${i + 1} 页`,
+    })),
+  ];
+  return (
+    <>
+      <p className="notice">
+        《{a.title}》整版阅览：全书共 {items.length} 页（封面、凡例、图式谱页 {list.length} 页、全名索引）。单页模式逐页翻看，连看模式一卷到底；也可
+        <a href={`/archives/${a.id}/book.pdf`} download>下载整版 PDF</a>离线阅读。
+      </p>
+      <BookReader archiveId={a.id} items={items} />
     </>
   );
 }
