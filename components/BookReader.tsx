@@ -7,6 +7,7 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
   const total = items.length;
   const [mode, setMode] = useState<'single' | 'scroll'>('single');
   const [cur, setCur] = useState(0);
+  const [jump, setJump] = useState('');
   const figRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -66,6 +67,11 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
     return () => window.removeEventListener('keydown', onKey);
   });
 
+  const doJump = () => {
+    const v = parseInt(jump, 10);
+    if (v >= 1 && v <= total) go(v - 1);
+  };
+
   const pick = (m: 'single' | 'scroll') => {
     setMode(m);
     try {
@@ -76,11 +82,14 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
 
   return (
     <div className={mode === 'scroll' ? 'bookreader br-scroll' : 'bookreader br-single'}>
-      <div className="br-bar controls">
-        <a href={`/archives/${archiveId}/`}>← 返回档案</a>
-        <span aria-live="polite">
-          第 {cur + 1} / {total} 页 · {items[cur].label}
+      <div className="br-bar">
+        <a className="br-home" href={`/archives/${archiveId}/`}>
+          返回档案
+        </a>
+        <span className="br-info" aria-live="polite">
+          第 <b>{cur + 1}</b> / {total} 页 · {items[cur].label}
         </span>
+        <span className="br-flex" />
         <span className="br-modes" role="group" aria-label="阅览模式">
           <button type="button" className={mode === 'single' ? 'on' : ''} onClick={() => pick('single')}>
             单页
@@ -89,6 +98,23 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
             连看
           </button>
         </span>
+        <label className="br-jumplabel">
+          页码
+          <input
+            className="br-jump"
+            type="number"
+            min={1}
+            max={total}
+            value={jump}
+            onChange={(e) => setJump(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') doJump();
+            }}
+          />
+        </label>
+        <button type="button" className="br-primary" onClick={doJump}>
+          跳页
+        </button>
       </div>
       {items.map((it, i) => (
         <figure
