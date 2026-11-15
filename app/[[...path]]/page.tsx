@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { pages, persons, archives, regions, villages, sources, routes } from '../../lib/data';
+import EnpingJuanshou from '../../components/sections/EnpingJuanshou';
 import Search from '../../components/Search';
 import Home from '../../components/sections/Home';
 import About from '../../components/sections/About';
@@ -18,6 +19,7 @@ export function generateStaticParams() {
 }
 
 function title(path: string[]) {
+  if (path[0] === 'enping-fengshi-juanshou') return '恩平冯氏族谱 · 卷首影印';
   if (!path.length) return '寻根有据，世系有源';
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
@@ -31,6 +33,7 @@ function title(path: string[]) {
 }
 
 function description(path: string[]): string | undefined {
+  if (path[0] === 'enping-fengshi-juanshou') return '恩平冯氏族谱卷首影印共17页，按原书顺序连续看图，点击放大查阅谱序、倡修经过与修谱合影。';
   if (path[0] === 'originals') return undefined;
   if (!path.length) return '面向全国冯氏宗亲的数字族谱档案平台。查阅原谱，寻找姓名，了解世系。';
   if (path[0] === 'persons') {
@@ -96,6 +99,7 @@ export default async function Page({ params }: Props) {
   if (!routes().includes(url)) notFound();
   let content;
   if (!path.length) content = <Home />;
+  else if (path[0] === 'enping-fengshi-juanshou') content = <EnpingJuanshou />;
   else if (path[0] === 'search') content = <Search />;
   else if (path[0] === 'about') content = <About />;
   else if (path[0] === 'news' && path.length === 1) content = <NewsIndex />;

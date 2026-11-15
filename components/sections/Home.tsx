@@ -65,14 +65,14 @@ export default function Home() {
           </ul>
         </section>
       )}
-      <a className="enping-card" href="/enping-fengshi-juanshou.pdf" target="_blank" rel="noopener noreferrer">
+      <a className="enping-card" href="/enping-fengshi-juanshou/">
         <span className="enping-seal">冯</span>
         <span className="enping-body">
-          <span className="enping-title">《恩平冯氏谱 · 卷首影印》</span>
+          <span className="enping-title">《恩平冯氏族谱 · 卷首影印》</span>
           <span className="enping-motto">始平世泽 · 大树家声</span>
-          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影<span className="enping-more">　查看 PDF ›</span></span>
+          <span className="enping-intro">恩平冯氏总谱卷首影印：谱序、倡修经过与修谱合影<span className="enping-more">　在线阅览 ›</span></span>
         </span>
-        <span className="enping-btn">查看 PDF</span>
+        <span className="enping-btn">在线阅览</span>
       </a>
     </>
   );

@@ -37,3 +37,20 @@
 .home-news-head a{font-size:15px;text-decoration:none;white-space:nowrap}
 .home-news-item{margin:10px 0 0}
 @media(max-width:650px){.home-news{padding:16px 18px}.home-news-head h2{font-size:20px}}
+
+.juanshou-intro{color:#5a5248}
+.juanshou-pages{max-width:1000px;margin:20px auto}
+.juanshou-pages figure{margin:0 0 12px}
+.juanshou-image{display:block;width:100%;padding:0;border:0;border-radius:0;background:transparent;cursor:zoom-in}
+.juanshou-image img{display:block;width:100%;height:auto}
+.juanshou-pages figcaption{text-align:center;font-size:14px;color:#71665c;padding:4px}
+.juanshou-complete{text-align:center;margin:28px 0 36px}
+.juanshou-complete .button{display:inline-block;background:#742f32;color:#fff;padding:14px 24px;border-radius:999px;text-decoration:none}
+.juanshou-dialog{width:96vw;max-width:1600px;height:92dvh;max-height:92dvh;padding:0;border:1px solid #ded6c6;border-radius:10px;background:#f7f4ec;color:#302f29}
+.juanshou-dialog::backdrop{background:rgba(0,0,0,.8)}
+.juanshou-toolbar{display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:10px;height:64px;box-sizing:border-box}
+.juanshou-toolbar span{margin-right:auto;white-space:nowrap}
+.juanshou-toolbar button{padding:8px 12px;white-space:nowrap}
+.juanshou-zoom{height:calc(100% - 64px);overflow:auto;overscroll-behavior:contain}
+.juanshou-zoom img{display:block;max-width:100%;width:auto;height:auto;max-height:100%;margin:auto}
+.juanshou-zoom img.is-zoomed{max-width:none;max-height:none;width:1509px;height:auto;margin:0 auto}
