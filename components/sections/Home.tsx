@@ -14,7 +14,7 @@ export default function Home() {
         <h1>寻根有据，<br />世系有源。</h1>
         <p>从一页家谱，读懂一家人的来处。留存珍贵原谱，让宗亲记忆代代相传。</p>
         <form className="hero-search" action="/search/">
-          <input name="q" aria-label="查找姓名或编号" placeholder="输入姓名或编号" />
+          <input name="q" aria-label="输入姓名、村名、地名、房名或编号" placeholder="输入姓名、村名、房名或编号" />
           <button>搜索</button>
         </form>
       </section>

@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import PersonSearchResult from './PersonSearchResult';
 import index from '../data/search-index.json';
 import archives from '../data/archives.json';
 
@@ -27,10 +28,7 @@ export default function ArchiveSearch({ archiveId, showHeading = true }: { archi
       {q && <p role="status">在{title}中找到 {results.length} 条记录</p>}
       {q &&
         results.slice(0, 50).map((p) => (
-          <article key={p.id}>
-            <h3><a href={`/persons/${p.id}/`}>{p.originalName}</a></h3>
-            <p>{p.id} · 来源谱页见详情</p>
-          </article>
+          <PersonSearchResult key={p.id} id={p.id} name={p.originalName} archiveId={archiveId} />
         ))}
       {q && results.length > 50 && <p>结果较多，只显示前 50 条，请多输入一个字缩小范围。</p>}
       {q && !results.length && <p>本档案中暂无匹配记录。请尝试少输入一个字。</p>}

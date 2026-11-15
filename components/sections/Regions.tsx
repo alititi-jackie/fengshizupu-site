@@ -1,9 +1,11 @@
 import { regions, villages } from '../../lib/data';
+import RegionSearch from '../RegionSearch';
 
 export function RegionsIndex() {
   const unassigned = villages.filter((v) => !(v.regionIds || []).length);
   return (
     <>
+      <RegionSearch />
       <div className="grid">
         {regions.filter((r) => !r.parentId).map((r) => (
           <article key={r.id}>

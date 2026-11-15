@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { pages, persons, archives, regions, villages, sources, routes, bookIndexPages } from '../../lib/data';
 import EnpingJuanshou from '../../components/sections/EnpingJuanshou';
 import Search from '../../components/Search';
+import { personOrigins } from '../../lib/person-origins';
 import ArchiveSearch from '../../components/ArchiveSearch';
 import Home from '../../components/sections/Home';
 import About from '../../components/sections/About';
@@ -106,6 +107,8 @@ export default async function Page({ params }: Props) {
   const { path = [] } = await params;
   const url = '/' + (path.length ? path.join('/') + '/' : '');
   if (!routes().includes(url)) notFound();
+  const origins = path[0] === 'persons' ? personOrigins(path[1]) : [];
+  const archive = origins[0]?.archive;
   let content;
   if (!path.length) content = <Home />;
   else if (path[0] === 'enping-fengshi-juanshou') content = <EnpingJuanshou />;
@@ -128,7 +131,7 @@ export default async function Page({ params }: Props) {
     <>
       {path.length > 0 && (
         <>
-          <p className="crumb"><a href="/">首页</a> / {path[0] === 'news' && path.length === 2 ? <><a href="/news/">冯氏资讯</a> / </> : null}{title(path)}</p>
+          <p className="crumb"><a href="/">首页</a> / {path[0] === 'news' && path.length === 2 ? <><a href="/news/">冯氏资讯</a> / </> : null}{archive && <><a href={`/archives/${archive.id}/`}>{archive.title}</a> / </>}{title(path)}</p>
           {path[0] === 'archives' && path[2] === 'pages' && path.length === 4 && (
             <ArchiveSearch archiveId={path[1]} showHeading={false} />
           )}
