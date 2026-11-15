@@ -1,7 +1,7 @@
 'use client';
 import { useRef, useState } from 'react';
 
-export default function PageImage({ src, alt, caption }: { src: string; alt: string; caption: string }) {
+export default function PageImage({ src, alt, caption, width = 1241, height = 1754 }: { src: string; alt: string; caption: string; width?: number; height?: number }) {
   const dialog = useRef<HTMLDialogElement>(null);
   const [zoomed, setZoomed] = useState(false);
   function open() {
@@ -12,7 +12,7 @@ export default function PageImage({ src, alt, caption }: { src: string; alt: str
     <>
       <figure className="pageimg">
         <button type="button" className="pageimg-open" onClick={open} aria-label={`放大查看：${alt}`}>
-          <img src={src} alt={alt} width={1241} height={1754} />
+          <img src={src} alt={alt} width={width} height={height} />
         </button>
         <figcaption>{caption} · 点击图片可放大查看</figcaption>
       </figure>
