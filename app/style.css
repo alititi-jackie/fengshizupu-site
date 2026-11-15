@@ -62,8 +62,8 @@
 .br-single .br-page.cur{display:block}
 .br-scroll .br-page{scroll-margin-top:118px}
 .br-scroll .br-bar{position:sticky;top:48px;z-index:30;background:#f7f4ec;padding:8px 0}
-.br-modes{display:inline-flex;gap:8px}
-.br-modes button{background:#fffdf7;color:#742f32;border:1px solid #bdb4a3}
+.br-modes{display:inline-flex;border:1px solid #742f32;border-radius:8px;overflow:hidden;flex-shrink:0}
+.br-modes button{padding:7px 11px;font-size:15px;border:0;background:#fff;color:#742f32;cursor:pointer;font-family:inherit;line-height:1.25}
 .br-modes button.on{background:#742f32;color:#fff}
 .br-nav{justify-content:space-between}
 @media(max-width:650px){.br-scroll .br-bar{top:44px}.br-scroll .br-page{scroll-margin-top:150px}}
