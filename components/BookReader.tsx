@@ -8,6 +8,7 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
   const [mode, setMode] = useState<'single' | 'scroll'>('single');
   const [cur, setCur] = useState(0);
   const [jump, setJump] = useState('');
+  const [jumpOpen, setJumpOpen] = useState(false);
   const figRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -70,6 +71,7 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
   const doJump = () => {
     const v = parseInt(jump, 10);
     if (v >= 1 && v <= total) go(v - 1);
+    setJumpOpen(false);
   };
 
   const pick = (m: 'single' | 'scroll') => {
@@ -82,12 +84,16 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
 
   return (
     <div className={mode === 'scroll' ? 'bookreader br-scroll' : 'bookreader br-single'}>
-      <div className="br-bar">
+      <div className={jumpOpen ? 'br-bar jumpon' : 'br-bar'}>
         <a className="br-home" href={`/archives/${archiveId}/`}>
           返回档案
         </a>
         <span className="br-info" aria-live="polite">
-          第 <b>{cur + 1}</b> / {total} 页 · {items[cur].label}
+          第 <b>{cur + 1}</b>
+          <span className="br-info-extra">
+            {' '}
+            / {total} 页 · {items[cur].label}
+          </span>
         </span>
         <span className="br-flex" />
         <span className="br-modes" role="group" aria-label="阅览模式">
@@ -98,6 +104,9 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
             连看
           </button>
         </span>
+        <button type="button" className="br-jumptoggle" onClick={() => setJumpOpen((o) => !o)}>
+          跳页
+        </button>
         <label className="br-jumplabel">
           页码
           <input
