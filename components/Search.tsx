@@ -23,7 +23,6 @@ export default function Search() {
   const places = findPlaces(query);
   return (
     <>
-      <p className="notice">未搜到不代表原谱没有此人。</p>
       <form onSubmit={(event) => {
         event.preventDefault();
         const params = new URLSearchParams({ q: query.trim() });
@@ -45,7 +44,10 @@ export default function Search() {
         <p role="status">找到 {people.length} 条人物记录</p>
         {people.map((person) => <PersonSearchResult key={person.id} id={person.id} name={person.originalName} archiveId={archive} />)}
       </section>}
-      {!people.length && !places.places.length && !places.books.length && <p role="status">暂无匹配记录。请尝试少输入一个字。</p>}
+      {!people.length && !places.places.length && !places.books.length && <div role="status">
+        <p>暂未找到相关记录。可以试试输入部分姓名、村名或房名，也可以到<a href="/archives/">族谱档案</a>中查阅原谱。</p>
+        <small>搜索结果以本站已录入的资料为准。</small>
+      </div>}
     </>
   );
 }
