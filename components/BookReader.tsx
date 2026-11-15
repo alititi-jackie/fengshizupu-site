@@ -1,10 +1,20 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import ReadingImageDialog from './ReadingImageDialog';
 
 export type BookItem = { src: string; label: string; alt: string };
 
 export default function BookReader({ archiveId, items }: { archiveId: string; items: BookItem[] }) {
   const total = items.length;
+  const dialog = useRef<HTMLDialogElement>(null);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [zoomed, setZoomed] = useState(false);
+
+  function openImage(index: number) {
+    setSelected(index);
+    setZoomed(false);
+    dialog.current?.showModal();
+  }
   const [mode, setMode] = useState<'single' | 'scroll'>('single');
   const [cur, setCur] = useState(0);
   const [jump, setJump] = useState('');
@@ -61,6 +71,7 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (dialog.current?.open) return;
       if (e.key === 'ArrowLeft') go(cur - 1);
       if (e.key === 'ArrowRight') go(cur + 1);
     };
@@ -133,10 +144,16 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
           }}
           className={i === cur ? 'br-page cur' : 'br-page'}
         >
-          <img src={it.src} alt={it.alt} loading={i < 2 ? undefined : 'lazy'} width={1241} height={1754} />
+          <button type="button" className="juanshou-image" onClick={() => openImage(i)} aria-label={`放大第 ${i + 1} 页`}>
+            <img src={it.src} alt={it.alt} loading={i < 2 ? undefined : 'lazy'} width={1241} height={1754} />
+          </button>
           <figcaption>{it.label}</figcaption>
         </figure>
       ))}
+      <ReadingImageDialog dialog={dialog} src={selected === null ? undefined : items[selected].src}
+        alt={selected === null ? '' : items[selected].alt}
+        label={selected === null ? '整版谱页' : `第 ${selected + 1} / ${total} 页`}
+        zoomed={zoomed} toggleZoom={() => setZoomed((value) => !value)} />
       <div className="controls br-nav">
         <button type="button" onClick={() => go(cur - 1)} disabled={cur <= 0}>
           ← 上一页

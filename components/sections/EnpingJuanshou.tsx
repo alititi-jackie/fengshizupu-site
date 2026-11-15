@@ -1,5 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
+import ReadingImageDialog from '../ReadingImageDialog';
 import pages from '../../data/enping-juanshou.json';
 
 export default function EnpingJuanshou() {
@@ -24,15 +25,10 @@ export default function EnpingJuanshou() {
     <div className="juanshou-complete">
       <a className="button" href="https://enping.fengshizupu.com/" target="_blank" rel="noopener noreferrer">查看完整的恩平冯氏族谱</a>
     </div>
-    <dialog className="juanshou-dialog" ref={dialog} aria-label={`第 ${selected + 1} 页放大阅览`}>
-      <div className="juanshou-toolbar">
-        <span>第 {selected + 1} / {pages.length} 页</span>
-        <button onClick={() => setZoomed(!zoomed)}>{zoomed ? '适合屏幕' : '放大查看'}</button>
-        <button onClick={() => dialog.current?.close()}>关闭</button>
-      </div>
-      <div className="juanshou-zoom" key={`${selected}-${zoomed}`}>
-        <img src={pages[selected].src} width={pages[selected].width} height={pages[selected].height} className={zoomed ? 'is-zoomed' : ''} alt={`恩平冯氏族谱卷首影印，第 ${selected + 1} 页高清图`} />
-      </div>
-    </dialog>
+    <ReadingImageDialog dialog={dialog} src={pages[selected].src}
+      width={pages[selected].width} height={pages[selected].height}
+      alt={`恩平冯氏族谱卷首影印，第 ${selected + 1} 页高清图`}
+      label={`第 ${selected + 1} / ${pages.length} 页`}
+      zoomed={zoomed} toggleZoom={() => setZoomed((value) => !value)} />
   </>;
 }
