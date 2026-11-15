@@ -1,5 +1,5 @@
 import { archives, pages, persons, sources, villages, pageUrl, bookIndexPages } from '../../lib/data';
-import Viewer from '../Viewer';
+import PageImage from '../PageImage';
 import ArchiveSearch from '../ArchiveSearch';
 import BookReader, { type BookItem } from '../BookReader';
 
@@ -85,7 +85,7 @@ export function ArchivePageDetail({ id }: { id: string }) {
         <a href={`/archives/${p.archiveId}/`}>页码目录</a>
         {n < siblings.length - 1 && <a href={pageUrl(siblings[n + 1].id)}>下一张 →</a>}
       </div>
-      <Viewer src={`/archives/${p.archiveId}/typeset/${p.id}.jpg`} title={`冯氏族谱影像第${p.sequence}张`} />
+      <PageImage src={`/archives/${p.archiveId}/typeset/${p.id}.jpg`} alt={`冯氏族谱影像第${p.sequence}张`} caption={`冯氏族谱影像第${p.sequence}张`} />
       <p><a className="button" href={`/archives/${p.archiveId}/typeset/${p.id}.pdf`} download>下载本页 PDF</a></p>
       <h2>本页已录人物</h2>
       {sources.filter((s) => s.archivePageId === p.id).map((s) => (

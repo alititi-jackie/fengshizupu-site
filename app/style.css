@@ -67,3 +67,16 @@
 .br-modes button.on{background:#742f32;color:#fff}
 .br-nav{justify-content:space-between}
 @media(max-width:650px){.br-scroll .br-bar{top:44px}.br-scroll .br-page{scroll-margin-top:150px}}
+
+.pageimg{margin:0 0 18px}
+.pageimg-open{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
+.pageimg-open img{display:block;width:100%;height:auto;background:#fff;border:1px solid #ded6c6}
+.pageimg figcaption{text-align:center;color:#68675e;font-size:15px;margin-top:8px}
+.pagezoom-dialog{width:96vw;max-width:1600px;height:92dvh;max-height:92dvh;padding:0;border:1px solid #ded6c6;border-radius:10px;background:#f7f4ec;color:#302f29}
+.pagezoom-dialog::backdrop{background:rgba(0,0,0,.8)}
+.pagezoom-toolbar{display:flex;align-items:center;justify-content:flex-end;gap:12px;padding:10px;height:64px;box-sizing:border-box}
+.pagezoom-toolbar span{margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pagezoom-toolbar button{padding:8px 12px;white-space:nowrap}
+.pagezoom-zoom{height:calc(100% - 64px);overflow:auto;overscroll-behavior:contain}
+.pagezoom-zoom img{display:block;max-width:100%;width:auto;height:auto;max-height:100%;margin:auto}
+.pagezoom-zoom img.is-zoomed{max-width:none;max-height:none;width:1500px;height:auto;margin:0 auto}
