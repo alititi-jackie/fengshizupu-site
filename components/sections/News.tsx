@@ -88,6 +88,62 @@ function ArticleEnpingGenerations() {
   );
 }
 
+
+const relatedReading: Record<string, { links: [string, string][]; fullBook?: string }> = {
+  'feng-ru-enping-aviation': {
+    links: [
+      ['了解恩平冯氏寻根的村庄与房支线索', '/news/enping-feng-roots/'],
+      ['翻阅《恩平冯氏族谱》卷首影印', '/enping-fengshi-juanshou/'],
+    ],
+  },
+  'enping-feng-juanshou-guide': {
+    links: [['了解恩平冯氏的两套世系编号', '/news/enping-feng-generations/']],
+    fullBook: '看完卷首，想继续查村庄、房支或世系，可以',
+  },
+  'feng-genealogy-library-search': {
+    links: [
+      ['按村名或房名找族谱', '/regions/'],
+      ['用恩平冯氏卷首练习核对谱序和版本', '/news/enping-feng-juanshou-guide/'],
+    ],
+    fullBook: '如果要查的是恩平冯氏，可以',
+  },
+  'enping-feng-generations': {
+    links: [
+      ['按村庄和房支查找恩平族谱', '/news/enping-feng-roots/'],
+      ['对照卷首的谱序和修谱说明', '/news/enping-feng-juanshou-guide/'],
+    ],
+    fullBook: '想对照不同房支的原谱，可以',
+  },
+  'feng-surname-origin': {
+    links: [
+      ['了解恩平冯氏的世系和三大房', '/news/enping-feng-generations/'],
+      ['用谱籍和堂号查馆藏冯氏族谱', '/news/feng-genealogy-library-search/'],
+    ],
+  },
+  'enping-feng-roots': {
+    links: [
+      ['看懂恩平冯氏的世系编号', '/news/enping-feng-generations/'],
+      ['从谱序和合影读懂恩平冯氏卷首', '/news/enping-feng-juanshou-guide/'],
+    ],
+    fullBook: '已确定祖籍村或房支，想继续找对应谱页，可以',
+  },
+};
+
+function RelatedReading({ slug }: { slug: string }) {
+  const related = relatedReading[slug];
+  if (!related) return null;
+
+  return (
+    <section aria-labelledby="related-reading">
+      <h2 id="related-reading">延伸阅读</h2>
+      <ul>{related.links.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+      {related.fullBook && (
+        <p>{related.fullBook}<a href="https://enping.fengshizupu.com/">在线查阅《恩平冯氏族谱》全书</a>。</p>
+      )}
+    </section>
+  );
+}
+
 export function NewsArticle({ slug }: { slug: string }) {
   const n = NEWS.find((x) => x.slug === slug);
   const feature = fengNews.find((item) => item.slug === slug);
@@ -103,12 +159,13 @@ export function NewsArticle({ slug }: { slug: string }) {
             <section key={heading}><h2>{heading}</h2><p>{body}</p></section>
           ))}
           <h2>资料出处</h2>
-          <ul>{feature.references.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+          <ul>{feature.references.filter(([, href]) => href !== 'https://enping.fengshizupu.com/').map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
         </article>
       )}
       {slug === 'enping-feng-roots' ? <GuideEnping /> : null}
       {slug === 'feng-surname-origin' ? <ArticleFengOrigin /> : null}
       {slug === 'enping-feng-generations' ? <ArticleEnpingGenerations /> : null}
+      <RelatedReading slug={slug} />
     </>
   );
 }
