@@ -30,8 +30,7 @@ export default function Search() {
         if (archive) params.set('archive', archive);
         history.replaceState(null, '', `?${params}`);
       }}>
-        <label htmlFor="q">姓名、村名、地名、房名或编号</label>
-        <input id="q" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="例如：冯允思、小湴村" />
+        <input id="q" value={query} onChange={(event) => setQuery(event.target.value)} aria-label="输入姓名、村名、地名、房名或编号" placeholder="输入姓名、村名、房名或编号" />
         <label htmlFor="archive">人物来源</label>
         <select id="archive" value={archive} onChange={(event) => setArchive(event.target.value)}>
           <option value="">全部档案</option>
