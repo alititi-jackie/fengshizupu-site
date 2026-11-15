@@ -1,9 +1,11 @@
+import { fengNews } from '../../lib/feng-news';
 import PageImage from '../PageImage';
 import GuideEnping from './Guide';
 
 export type NewsItem = { slug: string; title: string; date: string; tag: string; summary: string };
 
 export const NEWS: NewsItem[] = [
+  ...fengNews,
   {
     slug: 'enping-feng-generations',
     title: '恩平冯氏怎么排世系：两套编号与三大房',
@@ -88,10 +90,21 @@ function ArticleEnpingGenerations() {
 
 export function NewsArticle({ slug }: { slug: string }) {
   const n = NEWS.find((x) => x.slug === slug);
+  const feature = fengNews.find((item) => item.slug === slug);
   return (
     <>
       {n && (
         <p><span className="badge">{n.tag}</span> <small>{fmtDate(n.date)}</small></p>
+      )}
+      {feature && (
+        <article>
+          <PageImage croppedPreview src={`/news/${feature.slug}.webp`} alt={feature.cover.join('。')} caption={feature.cover[0]} width={1080} height={650} />
+          {feature.sections.map(([heading, body]) => (
+            <section key={heading}><h2>{heading}</h2><p>{body}</p></section>
+          ))}
+          <h2>资料出处</h2>
+          <ul>{feature.references.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+        </article>
       )}
       {slug === 'enping-feng-roots' ? <GuideEnping /> : null}
       {slug === 'feng-surname-origin' ? <ArticleFengOrigin /> : null}
