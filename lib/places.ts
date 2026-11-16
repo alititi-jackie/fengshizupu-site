@@ -31,4 +31,10 @@ export const genealogyCollections = [
     description: '国家图书馆藏本，清冯廷正纂修，姚鼐乾隆五十二年（1787）序，四册 453 页，逐页在线连读，可下载 PDF。' },
   { title: '浙江诸暨紫岩冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/zhuji-ziyan-feng.html',
     description: '上海图书馆藏本，民国十八年（1929）接修，冯仲达等纂修，全一册 748 页，逐页在线连读，可下载 PDF。' },
+  { title: '湖北富川荆源冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/fuchuan-jingyuan-feng.html',
+    description: '上海图书馆藏本，民国二十六年（1937）修，存卷行传 179 页，逐页在线连读，可下载 PDF。' },
+  { title: '湖南湘潭油麻岭冯氏六修族谱', url: 'https://zp1.fengshizupu.com/book/youmaling-feng-liuxiu.html',
+    description: '上海图书馆藏本，民国二十二年（1933）六修，冯镇嵩等纂修，二十七卷 4,163 页，逐页在线连读，可下载 PDF。' },
+  { title: '湖南湘潭油麻岭冯氏四修族谱', url: 'https://zp1.fengshizupu.com/book/youmaling-feng-sixiu.html',
+    description: '上海图书馆藏本，清同治六年（1867）修，冯芳绥等修，存卷 402 页，逐页在线连读，可下载 PDF。' },
 ];
