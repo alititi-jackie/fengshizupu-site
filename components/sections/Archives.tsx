@@ -1,3 +1,4 @@
+import SiteLink from '../SiteLink';
 import { genealogySites } from '../../lib/places';
 import ArchivePageCard from '../ArchivePageCard';
 import { archives, pages, persons, sources, villages, pageUrl, bookIndexPages } from '../../lib/data';
@@ -11,7 +12,7 @@ export function ArchiveList() {
       <section aria-label="各地族谱">
         {genealogySites.map((site) => (
           <article key={site.slug}>
-            <h2><a href={site.url}>{site.title}</a></h2>
+            <h2><SiteLink href={site.url}>{site.title}</SiteLink></h2>
             <p>{site.description}</p>
           </article>
         ))}

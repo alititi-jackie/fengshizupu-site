@@ -1,3 +1,4 @@
+import SiteLink from '../SiteLink';
 import type { ComponentType, ReactNode } from 'react';
 import { fengNews } from '../../lib/feng-news';
 import PageImage from '../PageImage';
@@ -47,8 +48,8 @@ function ArticleFengOrigin() {
       <h2>三、两汉望族：冯奉世与冯异不是一家人</h2>
       <p>汉代冯氏最有名的两支望族，常被误排成一条世系。《元和姓纂》载：冯奉世是西汉名将，本居上党，是上党冯氏的先祖，后徙杜陵；冯异是东汉开国名将，颍川父城人，是颍川冯氏的先祖——诸将争功时他独自避在大树下，人称「大树将军」。冯氏郡望主要有始平、上党、颍川、长乐、京兆、弘农。《恩平冯氏谱》卷首堂联「始平世泽 · 大树家声」，说的正是总郡望始平与大树将军冯异。</p>
       <h2>四、南迁岭南与恩平冯氏</h2>
-      <p>汉唐以后，冯氏子孙北迁南徙、遍布各地，其间另有少数民族改姓融入。岭南冯氏多奉南朝冯业为始祖。恩平一带的冯氏世系，可查本站收录的<a href="/enping-fengshi-juanshou/" target="_blank" rel="noopener noreferrer">《恩平冯氏族谱 · 卷首影印》</a>与<a href={ENPING_NINGZHAI}>小湴村凝斋房族谱档案</a>。</p>
-      <p>姓氏远源是各支共奉的源头，一房一村的近世世系，仍以自家谱牒为准。查本村人物，可到恩平站<a href={ENPING_NINGZHAI}>族谱档案</a>按姓名或编号检索。</p>
+      <p>汉唐以后，冯氏子孙北迁南徙、遍布各地，其间另有少数民族改姓融入。岭南冯氏多奉南朝冯业为始祖。恩平一带的冯氏世系，可查本站收录的<a href="/enping-fengshi-juanshou/" target="_blank" rel="noopener noreferrer">《恩平冯氏族谱 · 卷首影印》</a>与<SiteLink href={ENPING_NINGZHAI}>小湴村凝斋房族谱档案</SiteLink>。</p>
+      <p>姓氏远源是各支共奉的源头，一房一村的近世世系，仍以自家谱牒为准。查本村人物，可到恩平站<SiteLink href={ENPING_NINGZHAI}>族谱档案</SiteLink>按姓名或编号检索。</p>
     </article>
   );
 }
@@ -69,7 +70,7 @@ function ArticleEnpingGenerations() {
       <p>复春房朝珍一支，从二十世起分为近桂、凝斋两支。二十至三十九世字辈：思、隆、纯世、德（敦）/禧、彰/广、明/集、基/英、安（业）/浚、础（成）/常、定/兴、修/慈、仁/祥、尚/恺、义/悌、说/忠、礼/诚、敦/笃、诗/信、睦/家、邻/传。四十至五十三世字辈：爱/俊、友/秀、博/国、施/选、济/选、众/能、群/相、欣/期、康/滋、乐/盛、普/永、庆/保、大/绵、同/长。</p>
       <p>本站收录的小湴村凝斋房，正是朝珍一支的凝斋一支：谱中二十世用「思」（允思、翘思诸公）、二十一世用「隆」、二十二世用「世」、二十三世用「德」、二十四世用「彰」、二十五世用「明」，与这套字辈正好对得上。</p>
       <p>梨园岳孔房则用另一套字辈：「复积天竺日圣文仲诚恕月德，惟汝卿岳相绍作远奕显宏昌，缵承传道学继述启名贤。」</p>
-      <p>实际查自家世系时，最稳的顺序是：村名 ＋ 房名 ＋ 祖父、曾祖三代姓名 ＋ 字辈，再对照本房族谱。这样能分清同名、过继和不同起算标准造成的世代数差异。查小湴村凝斋房，可到恩平站<a href={ENPING_NINGZHAI}>族谱档案</a>按姓名或编号检索。</p>
+      <p>实际查自家世系时，最稳的顺序是：村名 ＋ 房名 ＋ 祖父、曾祖三代姓名 ＋ 字辈，再对照本房族谱。这样能分清同名、过继和不同起算标准造成的世代数差异。查小湴村凝斋房，可到恩平站<SiteLink href={ENPING_NINGZHAI}>族谱档案</SiteLink>按姓名或编号检索。</p>
     </article>
   );
 }
@@ -122,9 +123,9 @@ function RelatedReading({ slug }: { slug: string }) {
   return (
     <section aria-labelledby="related-reading">
       <h2 id="related-reading">延伸阅读</h2>
-      <ul>{related.links.map(([label, href]) => <li key={href}><a href={href}>{label}</a></li>)}</ul>
+      <ul>{related.links.map(([label, href]) => <li key={href}><SiteLink href={href}>{label}</SiteLink></li>)}</ul>
       {related.fullBook && (
-        <p>{related.fullBook}<a href="https://enping.fengshizupu.com/">在线查阅《恩平冯氏族谱》全书</a>。</p>
+        <p>{related.fullBook}<SiteLink href="https://enping.fengshizupu.com/">在线查阅《恩平冯氏族谱》全书</SiteLink>。</p>
       )}
     </section>
   );
@@ -171,7 +172,7 @@ function NewsArticleLayout({ entry, references, children }: {
         <section>
           <h2>资料出处</h2>
           <ul>{references.filter(([, href]) => href !== 'https://enping.fengshizupu.com/').map(([label, href]) => (
-            <li key={href}><a href={href}>{label}</a></li>
+            <li key={href}><SiteLink href={href}>{label}</SiteLink></li>
           ))}</ul>
         </section>
       )}

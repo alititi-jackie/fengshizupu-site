@@ -1,3 +1,4 @@
+import SiteLink from '../SiteLink';
 import { ENPING_XIAOWAN, ENPING_NINGZHAI, ENPING_URL } from '../../lib/places';
 
 export default function GuideEnping() {
@@ -8,19 +9,19 @@ export default function GuideEnping() {
       <p>广东冯氏各谱普遍宗冯业为岭南始祖。江门日报 2022 年关于恩平牛江镇莲塘村的报道载：冯氏先祖于南宋开禧元年（1205 年）由南雄珠玑巷迁入恩平；莲塘与昌梅同族同宗，昌梅为冯如故里。</p>
       <p>这段是恩平冯氏整体的迁徙背景，不是小湴村本支的迁入年代——小湴村凝斋房本支的世次与迁入情况，以该房族谱原文为准，不要把全县的背景直接套到本村头上。</p>
       <h2>小湴村凝斋房怎么查</h2>
-      <p>恩平站收录了<a href={ENPING_XIAOWAN}>小湴村</a>凝斋房这册谱：27 页原谱已转录为 1133 人、1095 条父子关系，第 20 至 30 世、十房（允思、翘思、伟思、挺思、昂思、沛思、秩思、检思、思元、裔思），姓名已对照原图核实。</p>
+      <p>恩平站收录了<SiteLink href={ENPING_XIAOWAN}>小湴村</SiteLink>凝斋房这册谱：27 页原谱已转录为 1133 人、1095 条父子关系，第 20 至 30 世、十房（允思、翘思、伟思、挺思、昂思、沛思、秩思、检思、思元、裔思），姓名已对照原图核实。</p>
       <p>查法分三步：</p>
       <ol>
         <li>先确认祖籍村与房支：良西镇雁鹅村委会小湴村、凝斋房。</li>
-        <li>在恩平站<a href={ENPING_NINGZHAI + "search/"}>搜索框</a>输入姓名，或输入人物编号（如 p000123）精确查找；人物页有父子世系链。</li>
-        <li>拿不准的，先看<a href={ENPING_NINGZHAI}>族谱档案</a>里的图式谱页（27 页可逐页查阅、下载单页 PDF），再与家里保存的谱页对照。</li>
+        <li>在恩平站<SiteLink href={ENPING_NINGZHAI + "search/"}>搜索框</SiteLink>输入姓名，或输入人物编号（如 p000123）精确查找；人物页有父子世系链。</li>
+        <li>拿不准的，先看<SiteLink href={ENPING_NINGZHAI}>族谱档案</SiteLink>里的图式谱页（27 页可逐页查阅、下载单页 PDF），再与家里保存的谱页对照。</li>
       </ol>
       <p>提醒两点：其一，54 人目前暂列「世系待考」，未归入任何一房，查不到时先别硬套；其二，良西镇水稻育秧中心在大湴村，不是小湴村，查资料时别把两村混淆。</p>
       <h2>寻根清单</h2>
       <ul>
         <li>祖籍：广东省江门市恩平市良西镇雁鹅村委会小湴村</li>
         <li>房支：凝斋房（十房见上文）</li>
-        <li>恩平站入口：<a href={ENPING_URL}>恩平冯氏族谱</a>，村庄页 <a href={ENPING_XIAOWAN}>小湴村</a></li>
+        <li>恩平站入口：<SiteLink href={ENPING_URL}>恩平冯氏族谱</SiteLink>，村庄页 <SiteLink href={ENPING_XIAOWAN}>小湴村</SiteLink></li>
       </ul>
     </article>
   );

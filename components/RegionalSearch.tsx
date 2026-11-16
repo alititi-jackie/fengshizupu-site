@@ -6,11 +6,11 @@ export default function RegionalSearch({ site, home = false }: { site: Genealogy
   return (
     <div className="regional-search">
       <form className="hero-search" action={site.search.url} method="get" target="_blank" rel="noopener"
-        aria-label={label} aria-describedby="regional-search-scope">
+        aria-label={label} aria-describedby={home ? "regional-search-scope" : undefined}>
         <SearchField name={site.search.param} placeholder={`${label}：${site.search.hint}`} required />
         <SearchSubmit />
       </form>
-      <small id="regional-search-scope">{home ? `目前仅支持搜索${site.title}，` : ''}结果在新窗口打开。</small>
+      {home && <small id="regional-search-scope">目前暂仅支持搜索恩平冯氏族谱。</small>}
     </div>
   );
 }

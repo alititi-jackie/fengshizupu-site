@@ -1,4 +1,5 @@
 'use client';
+import SiteLink from '../SiteLink';
 import { useRef, useState } from 'react';
 import ReadingImageDialog from '../ReadingImageDialog';
 import pages from '../../data/enping-juanshou.json';
@@ -23,7 +24,7 @@ export default function EnpingJuanshou() {
       </figure>)}
     </div>
     <div className="juanshou-complete">
-      <a className="button" href="https://enping.fengshizupu.com/" target="_blank" rel="noopener noreferrer">查看完整的恩平冯氏族谱</a>
+      <SiteLink className="button" href="https://enping.fengshizupu.com/">查看完整的恩平冯氏族谱</SiteLink>
     </div>
     <ReadingImageDialog dialog={dialog} src={pages[selected].src}
       width={pages[selected].width} height={pages[selected].height}

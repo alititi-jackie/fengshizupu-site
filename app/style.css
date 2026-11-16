@@ -84,3 +84,6 @@
 
 .regional-search small{display:block;margin-top:6px}
 .news-categories a[aria-current="page"]{font-weight:700;text-decoration:underline}
+
+footer{text-align:center}
+footer a{text-decoration:none}
