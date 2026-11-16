@@ -29,4 +29,6 @@ export const genealogyCollections = [
     description: '南京图书馆藏本，民国二十三年（1934）刊，四卷 1,317 页，逐页在线连读，可下载 PDF。' },
   { title: '山西代县道后冯氏世谱', url: 'https://zp1.fengshizupu.com/book/daohou-feng-shipu.html',
     description: '国家图书馆藏本，清冯廷正纂修，姚鼐乾隆五十二年（1787）序，四册 453 页，逐页在线连读，可下载 PDF。' },
+  { title: '浙江诸暨紫岩冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/zhuji-ziyan-feng.html',
+    description: '上海图书馆藏本，民国十八年（1929）接修，冯仲达等纂修，全一册 748 页，逐页在线连读，可下载 PDF。' },
 ];
