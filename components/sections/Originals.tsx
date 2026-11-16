@@ -57,7 +57,7 @@ export function OriginalsArchive({ id }: { id: string }) {
   return (
     <section>
       <p>本档案原图之后的更正记录见 <a href={`/originals/${a.id}/changes/`}>修改说明</a>。</p>
-      <div className="grid">
+      <div className="grid theme-catalog">
         {pages.filter((p) => p.archiveId === a.id).map((p) => (
           <ArchivePageCard key={p.id} href={p.imagePath} src={`/archives/${a.id}/derived/${p.id}-thumb.jpg`}
             alt={`原图第${p.sequence}张预览`} sequence={p.sequence} printedPage={p.printedPageLabel} />

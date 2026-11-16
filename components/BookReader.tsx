@@ -100,11 +100,8 @@ export default function BookReader({ archiveId, items }: { archiveId: string; it
           返回档案
         </a>
         <span className="br-info" aria-live="polite">
-          第 <b>{cur + 1}</b>
-          <span className="br-info-extra">
-            {' '}
-            / {total} 页 · {items[cur].label}
-          </span>
+          <b>{cur + 1}</b>/{total}
+          <span className="br-info-extra"> · {items[cur].label}</span>
         </span>
         <span className="br-flex" />
         <span className="br-modes" role="group" aria-label="阅览模式">

@@ -64,3 +64,7 @@ python scripts/build-book.py      # 整本 PDF（book.pdf；图表与上共用 d
 - 构建提示 original modified：停止发布，对照原上传记录恢复真实原件，不能改哈希掩盖损坏。
 - 深链接 404：必须部署 out/，确认尾斜杠及对应目录 index.html 存在。
 - Actions 部署失败：查看 Pages 设置与 pages/write 权限；构建成功不等于部署成功。
+
+## 两站共用样式
+
+主站的 `public/assets/genealogy-theme.css` 是共享样式源文件。修改后把同一份文件复制到恩平站 `assets/genealogy-theme.css`，两站分别构建与发布，并核对两份文件的 SHA-256 一致。页面按文件内容生成样式版本号。颜色、字体、公共容器、搜索控件、阅读工具栏和页脚的改动集中放在此文件，各站的搜索范围与阅读逻辑继续由各自代码维护。

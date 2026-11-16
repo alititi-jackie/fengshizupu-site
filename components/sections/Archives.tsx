@@ -41,7 +41,7 @@ export function ArchiveCatalog({ id }: { id: string }) {
         ))}
       </p>
       <ArchiveSearch archiveId={a.id} />
-      <div className="grid">
+      <div className="grid theme-catalog">
         {list.map((p) => (
           <ArchivePageCard key={p.id} href={pageUrl(p.id, a.id)} src={`/archives/${a.id}/typeset/${p.id}.jpg`}
             alt={`谱页第${p.sequence}张预览`} sequence={p.sequence} printedPage={p.printedPageLabel} pageId={p.id} />
@@ -88,17 +88,19 @@ export function ArchivePageDetail({ id }: { id: string }) {
   return (
     <>
       <p>影像序号 {p.sequence} / {siblings.length} · 原印页码：{p.printedPageLabel}</p>
-      <div className="controls">
+      <nav className="edition-sheet-nav" aria-label="谱页导航">
         {n > 0 && <a href={pageUrl(siblings[n - 1].id)}>← 上一张</a>}
         <a href={`/archives/${p.archiveId}/`}>页码目录</a>
         {n < siblings.length - 1 && <a href={pageUrl(siblings[n + 1].id)}>下一张 →</a>}
-      </div>
+      </nav>
       <PageImage src={`/archives/${p.archiveId}/typeset/${p.id}.jpg`} alt={`冯氏族谱影像第${p.sequence}张`} caption={`冯氏族谱影像第${p.sequence}张`} />
       <p><a className="button" href={`/archives/${p.archiveId}/typeset/${p.id}.pdf`} download>下载本页 PDF</a></p>
       <h2>本页已录人物</h2>
-      {sources.filter((s) => s.archivePageId === p.id).map((s) => (
-        <p key={s.personId}><a href={`/persons/${s.personId}/`}>{persons.find((x) => x.id === s.personId)?.originalName}</a></p>
-      ))}
+      <div className="theme-list">
+        {sources.filter((s) => s.archivePageId === p.id).map((s) => (
+          <a key={s.personId} href={`/persons/${s.personId}/`}>{persons.find((x) => x.id === s.personId)?.originalName}</a>
+        ))}
+      </div>
       {!sources.some((s) => s.archivePageId === p.id) && <p>本页尚未完成逐字转写，请直接查阅原图。</p>}
     </>
   );

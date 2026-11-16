@@ -3,7 +3,7 @@ import { ENPING_NINGZHAI, ENPING_URL } from '../../lib/places';
 
 export default function About() {
   return (
-    <article>
+    <article className="about-content">
       <h2>平台做什么</h2>
       <p>冯氏族谱是面向全国宗亲的数字族谱平台。主站汇集各地族谱入口、宗亲资讯和寻根指南，各地族谱站提供本地原谱、续修资料和世系查阅。</p>
       <h2>怎样查谱</h2>
