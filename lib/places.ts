@@ -23,4 +23,6 @@ export const genealogyCollections = [
     description: '在恩平站查阅 2026 版，可查姓名、看世系及谱页。' },
   { title: '浙江乐清小荊冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/yueqing-xiaojing-feng.html',
     description: '温州图书馆藏本，1993 年癸酉重修，6 册 894 页，逐页在线连读，可下载 PDF。' },
+  { title: '广东顺德大良竹园冯氏族谱', url: 'https://zp1.fengshizupu.com/book/shunde-daliang-zhuyuan-feng.html',
+    description: '上海图书馆藏本，清道光十二年（1832）修，十卷 851 页，逐页在线连读，可下载 PDF。' },
 ];
