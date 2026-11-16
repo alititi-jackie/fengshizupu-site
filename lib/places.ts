@@ -20,7 +20,7 @@ export const genealogySites = [enpingSite];
 
 export const genealogyCollections = [
   { title: '小湴村凝斋房', url: ENPING_NINGZHAI,
-    description: '在恩平站查阅 2026 版，可查姓名、看世系及谱页。' },
+    description: '在恩平冯氏族谱里查阅 2026 版，可查姓名、看世系及谱页。' },
   { title: '浙江乐清小荊冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/yueqing-xiaojing-feng.html',
     description: '温州图书馆藏本，1993 年癸酉重修，6 册 894 页，逐页在线连读，可下载 PDF。' },
   { title: '广东顺德大良竹园冯氏族谱', url: 'https://zp1.fengshizupu.com/book/shunde-daliang-zhuyuan-feng.html',
