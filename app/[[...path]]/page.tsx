@@ -1,6 +1,7 @@
 import PageHeading from '../../components/PageHeading';
 import { findNews, newsCategories, newsPath } from '../../lib/news';
-import EnpingSearch from '../../components/EnpingSearch';
+import RegionalSearch from '../../components/RegionalSearch';
+import { genealogySites } from '../../lib/places';
 import { notFound } from 'next/navigation';
 import { pages, persons, archives, regions, villages, sources, routes, bookIndexPages } from '../../lib/data';
 import EnpingJuanshou from '../../components/sections/EnpingJuanshou';
@@ -124,6 +125,7 @@ export default async function Page({ params }: Props) {
   const parents = [];
   if (parentArchive) parents.push({ href: `/archives/${parentArchive.id}/`, label: parentArchive.title });
   if (path[0] === 'news' && path.length > 1) parents.push({ href: '/news/', label: '冯氏资讯' });
+  const newsSite = news && genealogySites.find((site) => site.slug === news.category);
   const category = news && newsCategories.find((item) => item.slug === news.category);
   if (category) parents.push({ href: `/news/${category.slug}/`, label: category.title });
   let content;
@@ -147,7 +149,7 @@ export default async function Page({ params }: Props) {
     <>
       {path.length > 0 && (
         <PageHeading title={title(path)} parents={parents} beforeTitle={
-          path[0] === 'news' ? <EnpingSearch /> : isArchivePage && <ArchiveSearch archiveId={path[1]} showHeading={false} />
+          newsSite ? <RegionalSearch site={newsSite} /> : isArchivePage && <ArchiveSearch archiveId={path[1]} showHeading={false} />
         } />
       )}
       {content}

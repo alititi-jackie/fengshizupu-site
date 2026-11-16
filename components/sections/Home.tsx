@@ -1,4 +1,5 @@
-import EnpingSearch from '../EnpingSearch';
+import RegionalSearch from '../RegionalSearch';
+import { enpingSite } from '../../lib/places';
 import { fengLinks } from './fengLinks';
 import { NEWS, newsPath } from '../../lib/news';
 
@@ -14,7 +15,7 @@ export default function Home() {
         <p className="eyebrow">全国冯氏宗亲 · 数字族谱档案</p>
         <h1>寻根有据，世系有源。</h1>
         <p>从一页家谱，读懂一家人的来处。留存珍贵原谱，让宗亲记忆代代相传。</p>
-        <EnpingSearch />
+        <RegionalSearch site={enpingSite} home />
       </section>
       <section className="home-news">
         <div className="home-news-head">
