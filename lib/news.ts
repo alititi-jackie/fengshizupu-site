@@ -38,7 +38,16 @@ export const NEWS: NewsItem[] = [
 
 export const newsPath = ({ category, slug }: NewsItem) => `/news/${category}/${slug}/`;
 
-export function findNews(path: string[]) {
-  const slug = path.length === 2 ? path[1] : path[2];
-  return NEWS.find((item) => item.slug === slug && (path.length === 2 || item.category === path[1]));
-}
+
+export const NEWS_INDEX = { href: '/news/', label: '冯氏资讯' };
+export const NEWS_DESCRIPTION = '查阅冯氏宗亲新闻、地方族谱资料及寻根指南。';
+export const categoryPath = (slug: string) => `/news/${slug}/`;
+
+// Only URLs published before the move to regional news belong here.
+const legacySlugs = new Set([
+  'feng-ru-enping-aviation', 'enping-feng-juanshou-guide', 'feng-genealogy-library-search',
+  'enping-feng-generations', 'feng-surname-origin', 'enping-feng-roots',
+]);
+export const legacyNews = Object.fromEntries(
+  NEWS.filter(({ slug }) => legacySlugs.has(slug)).map((item) => [item.slug, item]),
+);

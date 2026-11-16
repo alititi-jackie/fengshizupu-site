@@ -2,7 +2,5 @@ node_modules/
 .next/
 out/
 *.tsbuildinfo
-public/archives/*/derived/
 public/downloads/
-data/search-index.json
 public/images/enping-juanshou/

@@ -3,7 +3,7 @@ import type { ComponentType, ReactNode } from 'react';
 import { fengNews } from '../../lib/feng-news';
 import PageImage from '../PageImage';
 import GuideEnping from './Guide';
-import { NEWS, newsCategories, newsPath, type NewsItem } from '../../lib/news';
+import { NEWS, newsCategories, newsPath, categoryPath, type NewsItem } from '../../lib/news';
 import { ENPING_NINGZHAI } from '../../lib/places';
 
 function fmtDate(d: string) {
@@ -17,12 +17,12 @@ export function NewsIndex({ category }: { category?: string }) {
     <>
       <nav className="news-categories" aria-label="资讯分类">
         <a href="/news/" aria-current={category ? undefined : 'page'}>全部资讯</a>
-        {newsCategories.map((item) => <a key={item.slug} href={`/news/${item.slug}/`}
+        {newsCategories.map((item) => <a key={item.slug} href={categoryPath(item.slug)}
           aria-current={category === item.slug ? 'page' : undefined}>{item.title}</a>)}
       </nav>
       {groups.map((group) => (
         <section key={group.slug}>
-          {!category && <h2><a href={`/news/${group.slug}/`}>{group.title}</a></h2>}
+          {!category && <h2><a href={categoryPath(group.slug)}>{group.title}</a></h2>}
           {NEWS.filter((item) => item.category === group.slug).map((item) => (
             <article key={item.slug}>
               <p><span className="badge">{item.tag}</span> <small>{fmtDate(item.date)}</small></p>

@@ -17,3 +17,8 @@ export const enpingSite: GenealogySite =
     search: { url: ENPING_URL, param: 'q', hint: '输入村名、房支、姓名或书页码' } };
 
 export const genealogySites = [enpingSite];
+
+export const genealogyCollections = [
+  { title: '小湴村凝斋房', url: ENPING_NINGZHAI,
+    description: '在恩平站查阅 2026 版，可查姓名、看世系及谱页。' },
+];
