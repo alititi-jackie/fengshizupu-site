@@ -1,4 +1,4 @@
-import { fengNews } from './feng-news';
+import { NEWS, newsCategories, newsPath } from './news';
 import pages from '../data/archive_pages.json';
 import persons from '../data/persons.json';
 import relationships from '../data/relationships.json';
@@ -9,4 +9,4 @@ import archives from '../data/archives.json';
 export { pages, persons, relationships, sources, villages, archives, regions };
 export const pageUrl=(id:string,archiveId=pages.find(p=>p.id===id)?.archiveId)=>`/archives/${archiveId}/pages/${id}/`;
 export const bookIndexPages:Record<string,number>={a000100:8};
-export function routes(){return ['/', '/enping-fengshi-juanshou/', '/regions/', '/search/', '/archives/', '/about/', '/news/', ...fengNews.map(({ slug }) => `/news/${slug}/`), '/news/enping-feng-roots/', '/news/feng-surname-origin/', '/news/enping-feng-generations/', '/originals/', ...archives.map(a=>`/originals/${a.id}/`), ...archives.map(a=>`/originals/${a.id}/changes/`), ...regions.filter(x=>x.status==='active').map(x=>`/regions/${x.id}/`),...villages.map(x=>`/villages/${x.id}/`),...archives.map(x=>`/archives/${x.id}/`),...archives.map(a=>`/archives/${a.id}/read/`),...persons.map(x=>`/persons/${x.id}/`),...pages.map(x=>pageUrl(x.id,x.archiveId))];}
+export function routes(){return ['/', '/enping-fengshi-juanshou/', '/regions/', '/search/', '/archives/', '/about/', '/news/', ...newsCategories.map(({ slug }) => `/news/${slug}/`), ...NEWS.map(newsPath), ...NEWS.map(({ slug }) => `/news/${slug}/`), '/originals/', ...archives.map(a=>`/originals/${a.id}/`), ...archives.map(a=>`/originals/${a.id}/changes/`), ...regions.filter(x=>x.status==='active').map(x=>`/regions/${x.id}/`),...villages.map(x=>`/villages/${x.id}/`),...archives.map(x=>`/archives/${x.id}/`),...archives.map(a=>`/archives/${a.id}/read/`),...persons.map(x=>`/persons/${x.id}/`),...pages.map(x=>pageUrl(x.id,x.archiveId))];}

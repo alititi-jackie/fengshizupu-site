@@ -1,6 +1,6 @@
-import { SearchField, SearchSubmit, SITE_SEARCH_HINT } from '../SearchField';
+import EnpingSearch from '../EnpingSearch';
 import { fengLinks } from './fengLinks';
-import { NEWS } from './News';
+import { NEWS, newsPath } from '../../lib/news';
 
 function fmtDate(d: string) {
   const [y, m, dd] = d.split('-');
@@ -12,12 +12,9 @@ export default function Home() {
     <>
       <section className="hero">
         <p className="eyebrow">全国冯氏宗亲 · 数字族谱档案</p>
-        <h1>寻根有据，<br />世系有源。</h1>
+        <h1>寻根有据，世系有源。</h1>
         <p>从一页家谱，读懂一家人的来处。留存珍贵原谱，让宗亲记忆代代相传。</p>
-        <form className="hero-search" action="/search/">
-          <SearchField name="q" aria-label="输入姓名、村名、地名、房名或编号" placeholder={SITE_SEARCH_HINT} />
-          <SearchSubmit />
-        </form>
+        <EnpingSearch />
       </section>
       <section className="home-news">
         <div className="home-news-head">
@@ -27,7 +24,7 @@ export default function Home() {
         {NEWS.slice(0, 2).map((n) => (
           <p className="home-news-item" key={n.slug}>
             <span className="badge">{n.tag}</span>{' '}
-            <a href={`/news/${n.slug}/`}>{n.title}</a>{' '}
+            <a href={newsPath(n)}>{n.title}</a>{' '}
             <small>{fmtDate(n.date)}</small>
           </p>
         ))}
@@ -41,18 +38,11 @@ export default function Home() {
         </span>
         <span className="enping-btn">看全书</span>
       </a>
-      <div className="grid">
-        <article>
-          <h2>族谱档案</h2>
-          <p>按原谱版式重排，可逐页查阅、下载单页或整版 PDF。</p>
-          <a href="/archives/a000100/">进入族谱档案 →</a>
-        </article>
-        <article>
-          <h2>从村庄走向全国</h2>
-          <p>按地区与村庄持续收录，人物和谱页拥有永久网址。</p>
-          <a href="/regions/">浏览地区目录 →</a>
-        </article>
-      </div>
+      <article>
+        <h2>各地族谱</h2>
+        <p>从各地族谱入口查阅原书、续修谱和世系资料。</p>
+        <a href="/archives/">进入族谱目录 →</a>
+      </article>
       {fengLinks.length > 0 && (
         <section>
           <h2>冯氏宗亲网站</h2>

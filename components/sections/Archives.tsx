@@ -1,3 +1,4 @@
+import { genealogySites } from '../../lib/places';
 import ArchivePageCard from '../ArchivePageCard';
 import { archives, pages, persons, sources, villages, pageUrl, bookIndexPages } from '../../lib/data';
 import PageImage from '../PageImage';
@@ -7,6 +8,14 @@ import BookReader, { type BookItem } from '../BookReader';
 export function ArchiveList() {
   return (
     <>
+      <section aria-label="各地族谱">
+        {genealogySites.map((site) => (
+          <article key={site.slug}>
+            <h2><a href={site.url}>{site.title}</a></h2>
+            <p>{site.description}</p>
+          </article>
+        ))}
+      </section>
       {archives.map((a) => (
         <article key={a.id}>
           <h2><a href={`/archives/${a.id}/`}>{a.title}</a></h2>

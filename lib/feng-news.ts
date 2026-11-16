@@ -1,6 +1,7 @@
 export const fengNews = [
   {
     slug: 'feng-ru-enping-aviation',
+    category: 'enping',
     title: '从恩平杏圃村到美国奥克兰：冯如的航空生涯',
     date: '2026-11-15',
     tag: '人物',
@@ -19,6 +20,7 @@ export const fengNews = [
   },
   {
     slug: 'enping-feng-juanshou-guide',
+    category: 'enping',
     title: '第一次翻《恩平冯氏族谱》卷首，先看哪几页？',
     date: '2026-11-15',
     tag: '指南',
@@ -36,6 +38,7 @@ export const fengNews = [
   },
   {
     slug: 'feng-genealogy-library-search',
+    category: 'general',
     title: '怎样在图书馆目录里查冯氏族谱？',
     date: '2026-11-15',
     tag: '指南',
@@ -50,7 +53,7 @@ export const fengNews = [
       ['上海图书馆家谱馆', 'https://www.library.sh.cn/special/GenealogyLibrary/'],
       ['上海图书馆家谱数据库说明', 'https://eservice.digilib.sh.cn/jbzx/admin/sla/ejb_details.asp?dbID=28299'],
       ['中国科学院自然科学史研究所资源导航', 'https://www.ihns.ac.cn/njgsz/zcbm/lytsg/zydh/sjkdh/zwdj/202310/t20231026_6909690.html'],
-      ['本站族谱档案', '/archives/'],
+      ['本站各地族谱入口', '/archives/'],
     ],
   },
 ];

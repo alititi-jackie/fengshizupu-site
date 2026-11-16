@@ -1,2 +1,10 @@
-export const dynamic='force-static';
-import {routes} from '../lib/data';export default function sitemap(){return routes().filter(p=>!p.startsWith('/originals')).map(p=>({url:'https://fengshizupu.com'+p}));}
+import { routes } from '../lib/data';
+import { NEWS } from '../lib/news';
+
+export const dynamic = "force-static";
+
+export default function sitemap() {
+  const oldNews = new Set(NEWS.map(({ slug }) => `/news/${slug}/`));
+  return routes().filter((path) => !path.startsWith('/originals') && !oldNews.has(path))
+    .map((path) => ({ url: 'https://fengshizupu.com' + path }));
+}

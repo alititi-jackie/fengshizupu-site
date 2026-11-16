@@ -2,49 +2,34 @@ import type { ComponentType, ReactNode } from 'react';
 import { fengNews } from '../../lib/feng-news';
 import PageImage from '../PageImage';
 import GuideEnping from './Guide';
-
-export type NewsItem = { slug: string; title: string; date: string; tag: string; summary: string };
-
-export const NEWS: NewsItem[] = [
-  ...fengNews,
-  {
-    slug: 'enping-feng-generations',
-    title: '恩平冯氏怎么排世系：两套编号与三大房',
-    date: '2026-11-14',
-    tag: '指南',
-    summary: '恩平冯氏两套编号并行：广东总世系从岭南始祖冯业起算，复春、万辅、宁邦三大房各以本房一世祖起算。总世系主干、三大房排列方式与复春房朝珍一支、梨园岳孔房字辈全录，附世系排法简图。',
-  },
-  {
-    slug: 'feng-surname-origin',
-    title: '冯姓的来源：从毕公高到冯城得姓',
-    date: '2026-11-14',
-    tag: '指南',
-    summary: '冯姓有两个并列的源头：姬姓一支由毕公高、毕万而下，支孙冯文孙受封冯城、以邑为氏；归姓一支始于郑大夫冯简子。附订正版冯氏来源简图，并说清冯奉世、冯异两汉望族与始平、上党、颍川等郡望的出处。',
-  },
-  {
-    slug: 'enping-feng-roots',
-    title: '恩平冯氏寻根指南',
-    date: '2026-11-13',
-    tag: '指南',
-    summary: '从南雄珠玑巷到良西镇小湴村：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。',
-  },
-];
+import { NEWS, newsCategories, newsPath, type NewsItem } from '../../lib/news';
+import { ENPING_NINGZHAI } from '../../lib/places';
 
 function fmtDate(d: string) {
   const [y, m, dd] = d.split('-');
   return `${y} 年 ${Number(m)} 月 ${Number(dd)} 日`;
 }
 
-export function NewsIndex() {
+export function NewsIndex({ category }: { category?: string }) {
+  const groups = category ? newsCategories.filter((item) => item.slug === category) : newsCategories;
   return (
     <>
-      <p>冯氏宗亲新闻、本站动态与寻根指南汇集于此：宗亲活动与冯氏相关消息标「新闻」，本站新收录、新功能与更正说明标「动态」，长效的查谱方法与族谱知识标「指南」。</p>
-      {NEWS.map((n) => (
-        <article key={n.slug}>
-          <p><span className="badge">{n.tag}</span> <small>{fmtDate(n.date)}</small></p>
-          <h2><a href={`/news/${n.slug}/`}>{n.title}</a></h2>
-          <p>{n.summary}</p>
-        </article>
+      <nav className="news-categories" aria-label="资讯分类">
+        <a href="/news/" aria-current={category ? undefined : 'page'}>全部资讯</a>
+        {newsCategories.map((item) => <a key={item.slug} href={`/news/${item.slug}/`}
+          aria-current={category === item.slug ? 'page' : undefined}>{item.title}</a>)}
+      </nav>
+      {groups.map((group) => (
+        <section key={group.slug}>
+          {!category && <h2><a href={`/news/${group.slug}/`}>{group.title}</a></h2>}
+          {NEWS.filter((item) => item.category === group.slug).map((item) => (
+            <article key={item.slug}>
+              <p><span className="badge">{item.tag}</span> <small>{fmtDate(item.date)}</small></p>
+              <h2><a href={newsPath(item)}>{item.title}</a></h2>
+              <p>{item.summary}</p>
+            </article>
+          ))}
+        </section>
       ))}
     </>
   );
@@ -62,8 +47,8 @@ function ArticleFengOrigin() {
       <h2>三、两汉望族：冯奉世与冯异不是一家人</h2>
       <p>汉代冯氏最有名的两支望族，常被误排成一条世系。《元和姓纂》载：冯奉世是西汉名将，本居上党，是上党冯氏的先祖，后徙杜陵；冯异是东汉开国名将，颍川父城人，是颍川冯氏的先祖——诸将争功时他独自避在大树下，人称「大树将军」。冯氏郡望主要有始平、上党、颍川、长乐、京兆、弘农。《恩平冯氏谱》卷首堂联「始平世泽 · 大树家声」，说的正是总郡望始平与大树将军冯异。</p>
       <h2>四、南迁岭南与恩平冯氏</h2>
-      <p>汉唐以后，冯氏子孙北迁南徙、遍布各地，其间另有少数民族改姓融入。岭南冯氏多奉南朝冯业为始祖。恩平一带的冯氏世系，可查本站收录的<a href="/enping-fengshi-juanshou/" target="_blank" rel="noopener noreferrer">《恩平冯氏族谱 · 卷首影印》</a>与<a href="/archives/a000100/">小湴村凝斋房族谱档案</a>。</p>
-      <p>姓氏远源是各支共奉的源头，一房一村的近世世系，仍以自家谱牒为准。查本村人物，可到本站<a href="/archives/a000100/">族谱档案</a>按姓名或编号检索。</p>
+      <p>汉唐以后，冯氏子孙北迁南徙、遍布各地，其间另有少数民族改姓融入。岭南冯氏多奉南朝冯业为始祖。恩平一带的冯氏世系，可查本站收录的<a href="/enping-fengshi-juanshou/" target="_blank" rel="noopener noreferrer">《恩平冯氏族谱 · 卷首影印》</a>与<a href={ENPING_NINGZHAI}>小湴村凝斋房族谱档案</a>。</p>
+      <p>姓氏远源是各支共奉的源头，一房一村的近世世系，仍以自家谱牒为准。查本村人物，可到恩平站<a href={ENPING_NINGZHAI}>族谱档案</a>按姓名或编号检索。</p>
     </article>
   );
 }
@@ -84,7 +69,7 @@ function ArticleEnpingGenerations() {
       <p>复春房朝珍一支，从二十世起分为近桂、凝斋两支。二十至三十九世字辈：思、隆、纯世、德（敦）/禧、彰/广、明/集、基/英、安（业）/浚、础（成）/常、定/兴、修/慈、仁/祥、尚/恺、义/悌、说/忠、礼/诚、敦/笃、诗/信、睦/家、邻/传。四十至五十三世字辈：爱/俊、友/秀、博/国、施/选、济/选、众/能、群/相、欣/期、康/滋、乐/盛、普/永、庆/保、大/绵、同/长。</p>
       <p>本站收录的小湴村凝斋房，正是朝珍一支的凝斋一支：谱中二十世用「思」（允思、翘思诸公）、二十一世用「隆」、二十二世用「世」、二十三世用「德」、二十四世用「彰」、二十五世用「明」，与这套字辈正好对得上。</p>
       <p>梨园岳孔房则用另一套字辈：「复积天竺日圣文仲诚恕月德，惟汝卿岳相绍作远奕显宏昌，缵承传道学继述启名贤。」</p>
-      <p>实际查自家世系时，最稳的顺序是：村名 ＋ 房名 ＋ 祖父、曾祖三代姓名 ＋ 字辈，再对照本房族谱。这样能分清同名、过继和不同起算标准造成的世代数差异。查小湴村凝斋房，可到本站<a href="/archives/a000100/">族谱档案</a>按姓名或编号检索。</p>
+      <p>实际查自家世系时，最稳的顺序是：村名 ＋ 房名 ＋ 祖父、曾祖三代姓名 ＋ 字辈，再对照本房族谱。这样能分清同名、过继和不同起算标准造成的世代数差异。查小湴村凝斋房，可到恩平站<a href={ENPING_NINGZHAI}>族谱档案</a>按姓名或编号检索。</p>
     </article>
   );
 }
@@ -93,38 +78,38 @@ function ArticleEnpingGenerations() {
 const relatedReading: Record<string, { links: [string, string][]; fullBook?: string }> = {
   'feng-ru-enping-aviation': {
     links: [
-      ['了解恩平冯氏寻根的村庄与房支线索', '/news/enping-feng-roots/'],
+      ['了解恩平冯氏寻根的村庄与房支线索', '/news/enping/enping-feng-roots/'],
       ['翻阅《恩平冯氏族谱》卷首影印', '/enping-fengshi-juanshou/'],
     ],
   },
   'enping-feng-juanshou-guide': {
-    links: [['了解恩平冯氏的两套世系编号', '/news/enping-feng-generations/']],
+    links: [['了解恩平冯氏的两套世系编号', '/news/enping/enping-feng-generations/']],
     fullBook: '看完卷首，想继续查村庄、房支或世系，可以',
   },
   'feng-genealogy-library-search': {
     links: [
-      ['按村名或房名找族谱', '/regions/'],
-      ['用恩平冯氏卷首练习核对谱序和版本', '/news/enping-feng-juanshou-guide/'],
+      ['按村名或房名查恩平族谱', 'https://enping.fengshizupu.com/villages.html'],
+      ['用恩平冯氏卷首练习核对谱序和版本', '/news/enping/enping-feng-juanshou-guide/'],
     ],
     fullBook: '如果要查的是恩平冯氏，可以',
   },
   'enping-feng-generations': {
     links: [
-      ['按村庄和房支查找恩平族谱', '/news/enping-feng-roots/'],
-      ['对照卷首的谱序和修谱说明', '/news/enping-feng-juanshou-guide/'],
+      ['按村庄和房支查找恩平族谱', '/news/enping/enping-feng-roots/'],
+      ['对照卷首的谱序和修谱说明', '/news/enping/enping-feng-juanshou-guide/'],
     ],
     fullBook: '想对照不同房支的原谱，可以',
   },
   'feng-surname-origin': {
     links: [
-      ['了解恩平冯氏的世系和三大房', '/news/enping-feng-generations/'],
-      ['用谱籍和堂号查馆藏冯氏族谱', '/news/feng-genealogy-library-search/'],
+      ['了解恩平冯氏的世系和三大房', '/news/enping/enping-feng-generations/'],
+      ['用谱籍和堂号查馆藏冯氏族谱', '/news/general/feng-genealogy-library-search/'],
     ],
   },
   'enping-feng-roots': {
     links: [
-      ['看懂恩平冯氏的世系编号', '/news/enping-feng-generations/'],
-      ['从谱序和合影读懂恩平冯氏卷首', '/news/enping-feng-juanshou-guide/'],
+      ['看懂恩平冯氏的世系编号', '/news/enping/enping-feng-generations/'],
+      ['从谱序和合影读懂恩平冯氏卷首', '/news/enping/enping-feng-juanshou-guide/'],
     ],
     fullBook: '已确定祖籍村或房支，想继续找对应谱页，可以',
   },

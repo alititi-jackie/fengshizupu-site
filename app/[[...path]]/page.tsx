@@ -1,5 +1,6 @@
 import PageHeading from '../../components/PageHeading';
-import { fengNews } from '../../lib/feng-news';
+import { findNews, newsCategories, newsPath } from '../../lib/news';
+import EnpingSearch from '../../components/EnpingSearch';
 import { notFound } from 'next/navigation';
 import { pages, persons, archives, regions, villages, sources, routes, bookIndexPages } from '../../lib/data';
 import EnpingJuanshou from '../../components/sections/EnpingJuanshou';
@@ -8,7 +9,7 @@ import { personOrigins } from '../../lib/person-origins';
 import ArchiveSearch from '../../components/ArchiveSearch';
 import Home from '../../components/sections/Home';
 import About from '../../components/sections/About';
-import { NewsIndex, NewsArticle, NEWS } from '../../components/sections/News';
+import { NewsIndex, NewsArticle } from '../../components/sections/News';
 import { RegionsIndex, RegionDetail } from '../../components/sections/Regions';
 import Village from '../../components/sections/Village';
 import Person from '../../components/sections/Person';
@@ -28,13 +29,13 @@ function title(path: string[]) {
   if (path[0] === 'persons') return persons.find((x) => x.id === path[1])?.originalName || '人物';
   if (path[0] === 'regions' && path[1]) return regions.find((x) => x.id === path[1])?.name || '地区目录';
   if (path[0] === 'villages' && path[1]) return villages.find((x) => x.id === path[1])?.name || '村庄资料';
-  if (path[0] === 'news') return NEWS.find((x) => x.slug === path[1])?.title || '冯氏资讯';
+  if (path[0] === 'news') return findNews(path)?.title || newsCategories.find((item) => item.slug === path[1])?.title || '冯氏资讯';
   if (path[0] === 'archives' && path[2] === 'read') return `${archives.find((x) => x.id === path[1])?.title || '族谱档案'} · 整版阅览`;
   if (path[0] === 'archives' && path[1] && path.length === 2) return archives.find((x) => x.id === path[1])?.title || '族谱档案';
   if (path[0] === 'originals' && path[2] === 'changes') return '修改说明';
   if (path[0] === 'originals' && path[1]) return `${archives.find((x) => x.id === path[1])?.title || ''} · 原谱档案`;
   if (path.length === 4) { const pg = pages.find((x) => x.id === path[3]); return pg ? `${pg.chartHeader} · 谱页 ${pg.sequence}` : '谱页'; }
-  return ({ regions: '地区目录', search: '姓名搜索', archives: '族谱档案', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案', news: '冯氏资讯' } as Record<string, string>)[path[0]] || '冯氏族谱';
+  return ({ regions: '地区目录', search: '姓名搜索', archives: '各地族谱', villages: '村庄资料', about: '关于冯氏族谱', originals: '原谱档案', news: '冯氏资讯' } as Record<string, string>)[path[0]] || '冯氏族谱';
 }
 
 function description(path: string[]): string | undefined {
@@ -78,14 +79,11 @@ function description(path: string[]): string | undefined {
     const pg = pages.find((x) => x.id === path[3]);
     return pg ? `${pg.chartHeader}谱页第 ${pg.sequence} 页（图式重排）：本页世系图含人物姓名与世系关系，可放大查看或下载本页 PDF。` : undefined;
   }
-  if (path[0] === 'archives') return '冯氏族谱收录的族谱档案目录：一册谱一个档案，含图式重排谱页与整版 PDF。';
+  if (path[0] === 'archives') return '从冯氏族谱导航进入各地族谱站，查阅恩平冯氏族谱和小湴村凝斋房档案。';
   if (path[0] === 'search') return '按姓名或编号搜索冯氏族谱收录人物：输入姓名，或 p000001 式编号精确查找。';
   if (path[0] === 'news' && path.length === 1) return '冯氏资讯：冯氏宗亲新闻、本站动态与寻根指南——宗亲活动消息、新收录与更正公告、查谱方法与族谱知识。';
-  const feature = path[0] === 'news' && fengNews.find((item) => item.slug === path[1]);
-  if (feature) return feature.summary;
-  if (path[0] === 'news' && path[1] === 'enping-feng-generations') return '恩平冯氏世系排法：广东总世系从冯业起算与本房世系两套编号并行；总世系主干冯业、大郎公、玄英公、黼公到复春公，复春、万辅、宁邦三大房排列，及复春房朝珍一支（近桂、凝斋）与梨园岳孔房字辈。';
-  if (path[0] === 'news' && path[1] === 'feng-surname-origin') return '冯姓的来源：姬姓一支由毕公高、毕万而下，支孙冯文孙受封冯城、以邑为氏；归姓一支始于郑大夫冯简子，两源并列。附订正简图，并考冯奉世、冯异两汉望族与始平、上党、颍川等郡望、堂联出处。';
-  if (path[0] === 'news') return '恩平冯氏寻根指南：先定村与房，再查目录与全文——广东冯氏源流、公开族谱目录概况，以及小湴村凝斋房在本站的三步查法。';
+  if (path[0] === 'news') return findNews(path)?.summary ||
+    `查阅${title(path)}，了解冯氏宗亲动态、族谱资料和寻根方法。`;
   return undefined;
 }
 
@@ -94,15 +92,18 @@ export async function generateMetadata({ params }: Props) {
   const t = title(path);
   const url = '/' + (path.length ? path.join('/') + '/' : '');
   const home = !path.length;
+  const legacyNews = path[0] === 'news' && path.length === 2 && findNews(path);
+  const canonical = legacyNews ? newsPath(legacyNews) : url;
   const fullTitle = home ? '冯氏族谱 · 寻根有据，世系有源' : t + ' · 冯氏族谱';
   const desc = description(path);
   return {
     title: home ? { absolute: fullTitle } : t,
     ...(desc ? { description: desc } : {}),
-    alternates: { canonical: url },
-    openGraph: { title: fullTitle, ...(desc ? { description: desc } : {}), url, locale: 'zh_CN', type: 'website', images: [{ url: '/og-logo.png', width: 512, height: 512, alt: '冯氏族谱' }] },
+    alternates: { canonical },
+    openGraph: { title: fullTitle, ...(desc ? { description: desc } : {}), url: canonical, locale: 'zh_CN', type: 'website', images: [{ url: '/og-logo.png', width: 512, height: 512, alt: '冯氏族谱' }] },
     twitter: { card: 'summary', title: fullTitle, images: ['/og-logo.png'] },
     ...(path[0] === 'persons' && persons.find((x) => x.id === path[1])?.verification !== 'verified' ? { robots: { index: false, follow: true } } : {}),
+    ...(legacyNews ? { robots: { index: false, follow: true } } : {}),
     ...(path[0] === 'originals' ? { robots: { index: false, follow: false } } : {}),
   };
 }
@@ -111,20 +112,26 @@ export default async function Page({ params }: Props) {
   const { path = [] } = await params;
   const url = '/' + (path.length ? path.join('/') + '/' : '');
   if (!routes().includes(url)) notFound();
+  const news = path[0] === 'news' ? findNews(path) : undefined;
+  if (news && path.length === 2) {
+    const href = newsPath(news);
+    return <><meta httpEquiv="refresh" content={`0; url=${href}`} /><p>文章已移至<a href={href}>{news.title}</a>。</p></>;
+  }
   const origins = path[0] === 'persons' ? personOrigins(path[1]) : [];
   const archive = origins[0]?.archive;
   const isArchivePage = path[0] === 'archives' && path[2] === 'pages' && path.length === 4;
   const parentArchive = isArchivePage ? archives.find((item) => item.id === path[1]) : archive;
   const parents = [];
   if (parentArchive) parents.push({ href: `/archives/${parentArchive.id}/`, label: parentArchive.title });
-  if (path[0] === 'news' && path.length === 2) parents.push({ href: '/news/', label: '冯氏资讯' });
+  if (path[0] === 'news' && path.length > 1) parents.push({ href: '/news/', label: '冯氏资讯' });
+  const category = news && newsCategories.find((item) => item.slug === news.category);
+  if (category) parents.push({ href: `/news/${category.slug}/`, label: category.title });
   let content;
   if (!path.length) content = <Home />;
   else if (path[0] === 'enping-fengshi-juanshou') content = <EnpingJuanshou />;
   else if (path[0] === 'search') content = <Search />;
   else if (path[0] === 'about') content = <About />;
-  else if (path[0] === 'news' && path.length === 1) content = <NewsIndex />;
-  else if (path[0] === 'news') content = <NewsArticle slug={path[1]} />;
+  else if (path[0] === 'news') content = news ? <NewsArticle slug={news.slug} /> : <NewsIndex category={path[1]} />;
   else if (path[0] === 'regions' && path.length === 1) content = <RegionsIndex />;
   else if (path[0] === 'regions') content = <RegionDetail id={path[1]} />;
   else if (path[0] === 'villages') content = <Village id={path[1]} />;
@@ -140,7 +147,7 @@ export default async function Page({ params }: Props) {
     <>
       {path.length > 0 && (
         <PageHeading title={title(path)} parents={parents} beforeTitle={
-          isArchivePage && <ArchiveSearch archiveId={path[1]} showHeading={false} />
+          path[0] === 'news' ? <EnpingSearch /> : isArchivePage && <ArchiveSearch archiveId={path[1]} showHeading={false} />
         } />
       )}
       {content}

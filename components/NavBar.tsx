@@ -4,10 +4,8 @@ import ShareButton from './ShareButton';
 
 const LINKS: { href: string; label: string; match: (p: string) => boolean }[] = [
   { href: '/', label: '首页', match: (p) => p === '/' },
-  { href: '/search/', label: '搜索', match: (p) => p.startsWith('/search') || p.startsWith('/persons') },
-  { href: '/archives/', label: '档案', match: (p) => p.startsWith('/archives') || p.startsWith('/originals') },
   { href: '/news/', label: '资讯', match: (p) => p.startsWith('/news') },
-  { href: '/regions/', label: '地区', match: (p) => p.startsWith('/regions') || p.startsWith('/villages') },
+  { href: '/archives/', label: '族谱', match: (p) => ['/archives', '/originals', '/persons'].some((prefix) => p.startsWith(prefix)) },
   { href: '/about/', label: '关于', match: (p) => p.startsWith('/about') },
 ];
 
