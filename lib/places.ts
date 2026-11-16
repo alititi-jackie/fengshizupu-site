@@ -25,4 +25,6 @@ export const genealogyCollections = [
     description: '温州图书馆藏本，1993 年癸酉重修，6 册 894 页，逐页在线连读，可下载 PDF。' },
   { title: '广东顺德大良竹园冯氏族谱', url: 'https://zp1.fengshizupu.com/book/shunde-daliang-zhuyuan-feng.html',
     description: '上海图书馆藏本，清道光十二年（1832）修，十卷 851 页，逐页在线连读，可下载 PDF。' },
+  { title: '山西代州冯氏族谱', url: 'https://zp1.fengshizupu.com/book/daizhou-feng.html',
+    description: '南京图书馆藏本，民国二十三年（1934）刊，四卷 1,317 页，逐页在线连读，可下载 PDF。' },
 ];
