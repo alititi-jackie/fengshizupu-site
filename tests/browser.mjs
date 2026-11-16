@@ -16,6 +16,17 @@ for(const path of ['/news/','/news/enping/','/news/general/','/news/general/feng
 await page.goto('http://127.0.0.1:4173/news/enping/enping-feng-roots/');
 assert(await page.getByRole('form',{name:'搜索恩平族谱'}).isVisible());
 assert.equal(await page.getByRole('link',{name:'小湴村',exact:true}).first().getAttribute('href'),'https://enping.fengshizupu.com/editions/v000100/');
+await page.goto('http://127.0.0.1:4173/news/enping/feng-ru-enping-aviation/');
+const cover=page.locator('.tallimg');
+assert.equal(await cover.evaluate(button=>getComputedStyle(button).padding),'0px');
+assert.equal(await cover.evaluate(button=>getComputedStyle(button).borderTopWidth),'1px');
+assert(await cover.locator('.news-image-crop img').evaluate(img=>img.getBoundingClientRect().left<img.parentElement.getBoundingClientRect().left));
+await cover.click();
+const coverDialog=page.getByRole('dialog');
+assert(await coverDialog.locator('.news-image-crop').isVisible());
+await coverDialog.getByRole('button',{name:'放大查看',exact:true}).click();
+assert(await coverDialog.locator('.news-image-crop.is-zoomed').isVisible());
+await coverDialog.getByRole('button',{name:'关闭',exact:true}).click();
 await page.goto('http://127.0.0.1:4173/archives/');
 const archive=page.getByRole('link',{name:'小湴村凝斋房',exact:true});
 assert.equal(await archive.getAttribute('href'),'https://enping.fengshizupu.com/editions/v000100/2026/a000100/');
