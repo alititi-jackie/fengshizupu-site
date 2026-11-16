@@ -21,4 +21,6 @@ export const genealogySites = [enpingSite];
 export const genealogyCollections = [
   { title: '小湴村凝斋房', url: ENPING_NINGZHAI,
     description: '在恩平站查阅 2026 版，可查姓名、看世系及谱页。' },
+  { title: '各地冯氏旧谱收藏', url: 'https://zp1.fengshizupu.com/',
+    description: '收录各地图书馆藏本冯氏宗谱影印（公有领域），逐页在线连读。首收浙江乐清小荊冯氏宗谱（1993 年重修，6 册 894 页）。' },
 ];
