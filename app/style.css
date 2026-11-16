@@ -17,9 +17,11 @@
 .mainnav-in::-webkit-scrollbar{display:none}
 .mainnav a{color:#302f29;text-decoration:none;white-space:nowrap;padding:4px 1px}
 .mainnav a.on{color:#742f32;font-weight:700;box-shadow:inset 0 -2px 0 #742f32}
-.hero-search{flex-wrap:nowrap}
-.hero-search input{flex:1 1 auto;min-width:0}
-.hero-search button{flex:none}
+.hero-search{flex-wrap:nowrap;gap:8px}
+.hero-search input{flex:1 1 auto;min-width:0;padding:12px 14px;font-size:16px;
+  border:1.5px solid #742f32;border-radius:10px;background:#fff}
+.hero-search input:focus-visible{outline:revert;outline-offset:revert}
+.hero-search button{flex:none;padding:12px 20px;font-size:16px;border:0;border-radius:10px}
 .archive-search{flex-wrap:nowrap}
 .archive-search input{flex:1 1 auto;min-width:0}
 .archive-search button{flex:none}
