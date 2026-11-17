@@ -7,10 +7,22 @@ function pageHref(page: number) {
   return page <= 1 ? '/archives/' : `/archives/zp${page}/`;
 }
 
+function Pager({ page, className }: { page: number; className?: string }) {
+  if (totalPages <= 1) return null;
+  return (
+    <nav className={'archives-pager' + (className ? ' ' + className : '')} aria-label="分页">
+      {page > 1 && <SiteLink href={pageHref(page - 1)}>‹ 上一页</SiteLink>}
+      <span>第 {page} 页 / 共 {totalPages} 页</span>
+      {page < totalPages && <SiteLink href={pageHref(page + 1)}>下一页 ›</SiteLink>}
+    </nav>
+  );
+}
+
 export default function ArchiveList({ page = 1 }: { page?: number }) {
   const collections = genealogyCollections.filter((c) => (c.page ?? 1) === page);
   return (
     <>
+      <Pager page={page} className="archives-pager-top" />
       {page === 1 &&
         genealogySites.map((site) => (
           <article key={site.slug}>
@@ -24,13 +36,7 @@ export default function ArchiveList({ page = 1 }: { page?: number }) {
           <p>{collection.description}</p>
         </article>
       ))}
-      {totalPages > 1 && (
-        <nav className="archives-pager" aria-label="分页">
-          {page > 1 && <SiteLink href={pageHref(page - 1)}>‹ 上一页</SiteLink>}
-          <span>第 {page} 页 / 共 {totalPages} 页</span>
-          {page < totalPages && <SiteLink href={pageHref(page + 1)}>下一页 ›</SiteLink>}
-        </nav>
-      )}
+      <Pager page={page} />
     </>
   );
 }
