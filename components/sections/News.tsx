@@ -1,3 +1,5 @@
+import ArticleCard from '../NewsCard';
+import { fmtDate } from '../../lib/format';
 import SiteLink from '../SiteLink';
 import type { ComponentType, ReactNode } from 'react';
 import { fengNews } from '../../lib/feng-news';
@@ -6,22 +8,10 @@ import GuideEnping from './Guide';
 import { NEWS, newsCategories, newsPath, categoryPath, type NewsItem } from '../../lib/news';
 import { ENPING_NINGZHAI } from '../../lib/places';
 
-function fmtDate(d: string) {
-  const [y, m, dd] = d.split('-');
-  return `${y} 年 ${Number(m)} 月 ${Number(dd)} 日`;
-}
+
 
 const byDateDesc = (a: NewsItem, b: NewsItem) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
 
-function ArticleCard({ item }: { item: NewsItem }) {
-  return (
-    <article>
-      <p><span className="badge">{item.tag}</span> <small>{fmtDate(item.date)}</small></p>
-      <h2><a href={newsPath(item)}>{item.title}</a></h2>
-      <p>{item.summary}</p>
-    </article>
-  );
-}
 
 const GUIDE_SLUGS = ['enping-feng-roots', 'feng-genealogy-library-search', 'enping-feng-juanshou-guide'];
 const PROVINCE_ORDER = ['浙江', '江苏', '安徽', '江西', '广东', '湖南', '湖北', '山西', '福建'];

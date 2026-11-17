@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import SearchForm from './SearchForm';
 
 type Entry = { g: string; t: string; d: string; u: string; s: string; ts: string };
 type PageRef = { t: string; u: string };
@@ -27,13 +28,7 @@ export default function UnifiedSearch() {
       .catch(() => setFailed(true));
   }, []);
 
-  const form = (
-    <form className="hero-search" action="/search/" method="get" aria-label="搜索全站族谱">
-      <input type="text" name="q" defaultValue={q} aria-label="搜索全站族谱：输入村名、房支、姓名、谱书名或书页码"
-        placeholder="搜索全站族谱：输入村名、房支、姓名、谱书名或书页码" required />
-      <button type="submit">搜索</button>
-    </form>
-  );
+  const form = <SearchForm key={q} query={q} />;
 
   const more = (
     <p className="search-more">
