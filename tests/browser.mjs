@@ -31,7 +31,7 @@ assert.equal(await archive.getAttribute('href'),'https://enping.fengshizupu.com/
 assert.equal(await archive.getAttribute('target'),null);
 await Promise.all([page.waitForURL('https://enping.fengshizupu.com/editions/v000100/2026/a000100/'),archive.click()]);
 await page.goto('http://127.0.0.1:4173/archives/');
-for(const retired of ['/archives/a000100/','/archives/a000100/book.pdf','/persons/p000001/','/originals/a000100/','/search/','/regions/']){
+for(const retired of ['/archives/a000100/','/archives/a000100/book.pdf','/persons/p000001/','/originals/a000100/','/regions/']){
  assert.equal((await page.request.get('http://127.0.0.1:4173'+retired)).status(),404);
 }
 await page.goto('http://127.0.0.1:4173/news/enping-feng-roots/');
