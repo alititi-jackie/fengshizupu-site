@@ -5,6 +5,16 @@ const assert = require('node:assert/strict');
  try { for (const width of [320, 390, 1440]) {
   const page = await browser.newPage({ viewport: { width, height: 900 } });
   const errors = []; page.on('pageerror', e => errors.push(e.message));
+  // UI-only PR checks reuse unchanged published scans; production builds use local renders.
+  if (process.env.FAMILY_UI_REMOTE_SCANS === '1') {
+    const domain = require('../data/site.json').domain;
+    await page.route('**/img/**', async route => {
+      const path = new URL(route.request().url()).pathname;
+      const response = await route.fetch({ url: domain + path });
+      assert(response.ok(), `Published original scan missing: ${path}`);
+      await route.fulfill({ response });
+    });
+  }
   await page.goto('http://127.0.0.1:4173/');
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.equal(await page.evaluate(() => getComputedStyle(document.body).fontSize), width <= 650 ? '16px' : '18px');
@@ -16,6 +26,7 @@ const assert = require('node:assert/strict');
   await page.locator('.book-cards .enping-card').first().click();
   await page.locator('.list a').first().click();
   await page.locator('#mSingle').click();
+  await page.waitForFunction(() => document.querySelector('#pg').naturalWidth > 0);
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'reader toolbar overflow');
   await page.locator('#next').click(); await page.waitForURL('**p=2');
   if(width <= 650) await page.locator('#jumpToggle').click();
