@@ -1,0 +1,25 @@
+.page { max-width: 960px; margin-inline: auto; }
+.intro { max-width: 46em; }
+.steps { display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 26px 0 12px; list-style: none; color: var(--red); }
+.steps li { display: flex; align-items: center; gap: 10px; }
+.steps li + li::before { content: '→'; color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin: 20px 0 36px; }
+.cards .card { display: flex; flex-direction: column; margin: 0; padding: 26px; }
+.cards .card h3 { margin: 0 0 12px; font-size: 24px; }
+.card p { margin: 0 0 16px; }
+.card .details { color: var(--muted); font-size: 15px; }
+.card a { align-self: flex-start; margin-top: auto; }
+.contact { border-top: 1px solid var(--line); padding-top: 8px; }
+.email { display: inline-block; max-width: 100%; font-size: 26px; font-weight: 700; overflow-wrap: anywhere; }
+.copy { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 14px 0 22px; }
+.copy button { background: var(--paper); color: var(--red); border-color: var(--red); font-size: 16px; }
+.copy span { color: var(--muted); font-size: 14px; }
+.checklist { padding-left: 1.5em; margin-bottom: 24px; }
+.checklist li { margin: 6px 0; }
+.motto { margin: 36px 0 0; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); text-align: center; font-size: 15px; }
+@media (max-width: 650px) {
+  .cards { grid-template-columns: 1fr; gap: 14px; }
+  .cards .card { padding: 22px; }
+  .cards .card h3 { font-size: 22px; }
+  .email { font-size: 23px; }
+}
