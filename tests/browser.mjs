@@ -1,18 +1,18 @@
 import {chromium} from '@playwright/test';import assert from 'node:assert/strict';
 const browser=await chromium.launch({headless:true,...(process.env.CHROMIUM_PATH?{executablePath:process.env.CHROMIUM_PATH}:{})});let checked=0;
-for(const viewport of [{width:390,height:844},{width:1440,height:1000}]){const page=await browser.newPage({viewport});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4173/');await page.screenshot({path:`/tmp/site-${viewport.width}.png`,fullPage:true});assert(await page.locator('h1').count());assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));await page.context().route('https://enping.fengshizupu.com/**',route=>route.fulfill({status:200,body:'Enping search'}));
-const form=page.getByRole('form',{name:'搜索恩平族谱'});
+for(const viewport of [{width:390,height:844},{width:1440,height:1000}]){const page=await browser.newPage({viewport});const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:4173/');await page.screenshot({path:`/tmp/site-${viewport.width}.png`,fullPage:true});assert(await page.locator('h1').count());assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+const form=page.getByRole('form',{name:'搜索全站族谱'});
 await form.locator('input[name=q]').fill('允思');
-await Promise.all([page.waitForURL(u=>new URL(u).origin==='https://enping.fengshizupu.com'),form.getByRole('button',{name:'搜索'}).click()]);
-assert.equal(new URL(page.url()).searchParams.get('q'),'允思');
+await Promise.all([page.waitForURL(u=>new URL(u).pathname==='/search/'),form.getByRole('button',{name:'搜索'}).click()]);
+assert.equal(new URL(page.url()).searchParams.get('q'),'允思');await page.waitForSelector('a[href*="/persons/p000001/"]');
 await page.goto('http://127.0.0.1:4173/');
 assert.equal(await page.locator('.mainnav a').allTextContents().then(labels=>labels.slice(0,3).join('/')),'首页/资讯/族谱');
 for(const path of ['/news/','/news/enping/','/news/general/','/news/general/feng-surname-origin/']){
  await page.goto('http://127.0.0.1:4173'+path);
- assert.equal(await page.getByRole('form',{name:'搜索恩平族谱'}).count(),0);
+ assert.equal(await page.getByRole('form',{name:'搜索全站族谱'}).count(),0);
 }
 await page.goto('http://127.0.0.1:4173/news/enping/enping-feng-roots/');
-assert(await page.getByRole('form',{name:'搜索恩平族谱'}).isVisible());
+assert(await page.getByRole('form',{name:'搜索全站族谱'}).isVisible());
 assert.equal(await page.getByRole('link',{name:'小湴村',exact:true}).first().getAttribute('href'),'https://enping.fengshizupu.com/editions/v000100/');
 await page.goto('http://127.0.0.1:4173/news/enping/feng-ru-enping-aviation/');
 const cover=page.locator('.tallimg');

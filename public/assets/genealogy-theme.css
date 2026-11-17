@@ -128,3 +128,16 @@
 .archives-pager a{color:var(--red);text-decoration:none}
 .archives-pager a:hover{text-decoration:underline}
 .archives-pager-top{justify-content:flex-start;margin:0 0 20px}
+
+/* 全站搜索结果（/search/） */
+.search-status{color:#6f675a;margin:16px 0 4px;font-size:15px}
+.search-group{margin:26px 0}
+.search-group h2{font-size:19px;margin:0 0 10px}
+.search-group h2 small{color:#8a8172;font-size:13px;font-weight:400;margin-left:8px}
+.search-rows{border-top:1px solid var(--line)}
+.search-row{display:block;padding:11px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
+.search-row:hover{background:#faf6ec}
+.search-row-t{display:block;font-size:16px;color:var(--red);font-weight:600}
+.search-row-d{display:block;font-size:13.5px;color:#6f675a;margin-top:2px}
+.search-note{font-size:13.5px;color:#8a8172;margin:10px 0 0}
+.search-note a{color:var(--red)}

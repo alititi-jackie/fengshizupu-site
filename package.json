@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && node scripts/check-links.mjs",
     "typecheck": "tsc --noEmit",
-    "assets": "python scripts/build-juanshou.py"
+    "assets": "python scripts/build-juanshou.py",
+    "search-index": "python3 scripts/build-search-index.py"
   },
   "dependencies": {
     "next": "16.4.6",
