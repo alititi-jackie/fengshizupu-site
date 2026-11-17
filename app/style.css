@@ -31,8 +31,8 @@
   display:block;width:var(--crop-width);max-width:none;height:auto;max-height:none;margin:0;border:0}
 .juanshou-zoom .news-image-crop{width:min(100%,calc((92dvh - 66px) * var(--crop-ratio)));margin-inline:auto}
 .juanshou-zoom .news-image-crop.is-zoomed{width:1509px}
-.tallimg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(rgba(247,243,234,0),rgba(247,243,234,.96));pointer-events:none}
-.tallimg-tip{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);background:#742f32;color:#fff8ee;padding:8px 20px;border-radius:999px;font-size:15px;font-weight:600;white-space:nowrap;z-index:1;box-shadow:0 2px 8px rgba(60,30,20,.25)}
+.tallimg::after{content:"";position:absolute;left:0;right:0;bottom:0;height:84px;background:linear-gradient(rgba(247,243,234,0),rgba(247,243,234,.92));pointer-events:none}
+.tallimg-tip{position:absolute;right:10px;bottom:10px;background:rgba(255,248,238,.88);color:#5a4632;padding:4px 11px;border:1px solid rgba(116,47,50,.16);border-radius:999px;font-size:13px;font-weight:600;white-space:nowrap;z-index:1;box-shadow:0 1px 5px rgba(60,30,20,.16)}
 @media(max-width:650px){.tallimg{max-height:430px}}
 
 .home-news{background:#fffdf7;border:1px solid #ded6c6;border-radius:12px;padding:20px 24px;margin:18px 0}
