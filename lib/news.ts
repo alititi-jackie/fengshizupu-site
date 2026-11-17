@@ -2,9 +2,9 @@ import { fengNews } from './feng-news';
 import { genealogySites } from './places';
 
 export const newsCategories = [
-  ...genealogySites.map(({ slug, place }) => ({ slug, title: place + '资讯' })),
   { slug: 'collection', title: '族谱收藏' },
-  { slug: 'general', title: '通用资讯' },
+  { slug: 'general', title: '冯氏文化' },
+  ...genealogySites.map(({ slug, place }) => ({ slug, title: place + '资讯' })),
 ];
 
 export type NewsItem = { slug: string; title: string; date: string; tag: string; summary: string; category: string; province?: string };
