@@ -18,6 +18,7 @@ const assert = require('node:assert/strict');
   await page.goto('http://127.0.0.1:4173/');
   assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
   assert.equal(await page.evaluate(() => getComputedStyle(document.body).fontSize), width <= 650 ? '16px' : '18px');
+  await page.screenshot({ path: `site-home-${width}.png`, fullPage: true });
   const count = await page.locator('.book-cards .enping-card:visible').count(); assert(count > 0);
   await page.locator('#bookSearch').fill('不存在的书名');
   assert.equal(await page.locator('.book-cards .enping-card:visible').count(), 0);
@@ -36,6 +37,10 @@ const assert = require('node:assert/strict');
   await page.locator('#imageClose').click();
   await page.locator('#mScroll').click(); assert(await page.locator('#scrollView .spage').count());
   assert(await page.locator('.dlrow a').count());
+  await page.evaluate(async () => {
+    const images = [...document.querySelectorAll('#scrollView img')];
+    await Promise.all(images.map(image => { image.loading = 'eager'; return image.decode(); }));
+  });
   await page.screenshot({ path: `site-${width}.png`, fullPage: true });
   assert.deepEqual(errors, []); await page.unrouteAll({ behavior: 'wait' }); await page.close();
  } } finally { await browser.close(); }
