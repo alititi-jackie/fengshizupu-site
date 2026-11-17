@@ -18,7 +18,9 @@ export const enpingSite: GenealogySite =
 
 export const genealogySites = [enpingSite];
 
-export const genealogyCollections = [
+export type GenealogyCollection = { title: string; url: string; description: string; page?: number };
+
+export const genealogyCollections: GenealogyCollection[] = [
   { title: '小湴村凝斋房', url: ENPING_NINGZHAI,
     description: '在恩平冯氏族谱里查阅 2026 版，可查姓名、看世系及谱页。' },
   { title: '浙江乐清小荊冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/yueqing-xiaojing-feng.html',
@@ -39,4 +41,6 @@ export const genealogyCollections = [
     description: '上海图书馆藏本，清同治六年（1867）修，冯芳绥等修，存卷 402 页，逐页在线连读，可下载 PDF。' },
   { title: '浙江仙居柯溪冯氏宗谱', url: 'https://zp1.fengshizupu.com/book/xianju-kexi-feng.html',
     description: '上海图书馆藏本，民国三年（1914）重修，十一卷 2,282 页，逐页在线连读，可下载 PDF。' },
+  { title: '浙江鄞县浣溪冯氏宗谱', url: 'https://zp2.fengshizupu.com/book/yinxian-huanxi-feng.html',
+    description: '天一阁藏本，民国十八年（1929）修，冯义圻等纂修，三十六卷 725 页，逐页在线连读，可下载 PDF。', page: 2 },
 ];
