@@ -6,7 +6,6 @@ const LINKS: { href: string; label: string; match: (p: string) => boolean }[] = 
   { href: '/', label: '首页', match: (p) => p === '/' },
   { href: '/news/', label: '资讯', match: (p) => p.startsWith('/news') },
   { href: '/archives/', label: '族谱', match: (p) => p.startsWith('/archives') },
-  { href: '/contribute/', label: '宗亲投稿', match: (p) => p.startsWith('/contribute') },
   { href: '/about/', label: '关于', match: (p) => p.startsWith('/about') },
 ];
 
