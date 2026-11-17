@@ -11,27 +11,87 @@ function fmtDate(d: string) {
   return `${y} 年 ${Number(m)} 月 ${Number(dd)} 日`;
 }
 
+const byDateDesc = (a: NewsItem, b: NewsItem) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0);
+
+function ArticleCard({ item }: { item: NewsItem }) {
+  return (
+    <article>
+      <p><span className="badge">{item.tag}</span> <small>{fmtDate(item.date)}</small></p>
+      <h2><a href={newsPath(item)}>{item.title}</a></h2>
+      <p>{item.summary}</p>
+    </article>
+  );
+}
+
+const GUIDE_SLUGS = ['enping-feng-roots', 'feng-genealogy-library-search', 'enping-feng-juanshou-guide'];
+const PROVINCE_ORDER = ['浙江', '江苏', '安徽', '江西', '广东', '湖南', '湖北', '山西', '福建'];
+
 export function NewsIndex({ category }: { category?: string }) {
-  const groups = category ? newsCategories.filter((item) => item.slug === category) : newsCategories;
+  const tabs = (
+    <nav className="news-categories" aria-label="资讯分类">
+      <a href="/news/" aria-current={category ? undefined : 'page'}>全部资讯</a>
+      {newsCategories.map((item) => <a key={item.slug} href={categoryPath(item.slug)}
+        aria-current={category === item.slug ? 'page' : undefined}>{item.title}</a>)}
+    </nav>
+  );
+
+  if (category === 'collection') {
+    const items = NEWS.filter((item) => item.category === 'collection').sort(byDateDesc);
+    const provinceOf = (item: NewsItem) => item.province ?? '其他';
+    const provinces = [...PROVINCE_ORDER.filter((p) => items.some((item) => provinceOf(item) === p)),
+      ...new Set(items.map(provinceOf).filter((p) => !PROVINCE_ORDER.includes(p)))];
+    return (
+      <>
+        {tabs}
+        {items.length === 0 && <p>各地冯氏族谱的介绍文章陆续发布。先到<a href="/archives/">各地族谱</a>看书目和原书。</p>}
+        {provinces.map((province) => (
+          <section key={province}>
+            <h2>{province}</h2>
+            {items.filter((item) => provinceOf(item) === province).map((item) => <ArticleCard key={item.slug} item={item} />)}
+          </section>
+        ))}
+      </>
+    );
+  }
+
+  if (category) {
+    const items = NEWS.filter((item) => item.category === category).sort(byDateDesc);
+    return (
+      <>
+        {tabs}
+        <section>
+          {items.map((item) => <ArticleCard key={item.slug} item={item} />)}
+        </section>
+      </>
+    );
+  }
+
+  const latest = [...NEWS].sort(byDateDesc).slice(0, 6);
+  const guides = GUIDE_SLUGS.map((slug) => NEWS.find((item) => item.slug === slug)).filter((item): item is NewsItem => !!item);
   return (
     <>
-      <nav className="news-categories" aria-label="资讯分类">
-        <a href="/news/" aria-current={category ? undefined : 'page'}>全部资讯</a>
-        {newsCategories.map((item) => <a key={item.slug} href={categoryPath(item.slug)}
-          aria-current={category === item.slug ? 'page' : undefined}>{item.title}</a>)}
-      </nav>
-      {groups.map((group) => (
-        <section key={group.slug}>
-          {!category && <h2><a href={categoryPath(group.slug)}>{group.title}</a></h2>}
-          {NEWS.filter((item) => item.category === group.slug).map((item) => (
-            <article key={item.slug}>
-              <p><span className="badge">{item.tag}</span> <small>{fmtDate(item.date)}</small></p>
-              <h2><a href={newsPath(item)}>{item.title}</a></h2>
-              <p>{item.summary}</p>
-            </article>
-          ))}
+      {tabs}
+      <section>
+        <h2>最新文章</h2>
+        {latest.map((item) => <ArticleCard key={item.slug} item={item} />)}
+      </section>
+      {newsCategories.map((group) => {
+        const items = NEWS.filter((item) => item.category === group.slug).sort(byDateDesc);
+        if (items.length === 0) return null;
+        return (
+          <section key={group.slug}>
+            <h2><a href={categoryPath(group.slug)}>{group.title}</a></h2>
+            {items.slice(0, 4).map((item) => <ArticleCard key={item.slug} item={item} />)}
+            {items.length > 4 && <p><a href={categoryPath(group.slug)}>查看全部 ›</a></p>}
+          </section>
+        );
+      })}
+      {guides.length > 0 && (
+        <section>
+          <h2>寻根指南</h2>
+          {guides.map((item) => <ArticleCard key={item.slug} item={item} />)}
         </section>
-      ))}
+      )}
     </>
   );
 }

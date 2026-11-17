@@ -3,10 +3,11 @@ import { genealogySites } from './places';
 
 export const newsCategories = [
   ...genealogySites.map(({ slug, place }) => ({ slug, title: place + '资讯' })),
+  { slug: 'collection', title: '族谱收藏' },
   { slug: 'general', title: '通用资讯' },
 ];
 
-export type NewsItem = { slug: string; title: string; date: string; tag: string; summary: string; category: string };
+export type NewsItem = { slug: string; title: string; date: string; tag: string; summary: string; category: string; province?: string };
 
 export const NEWS: NewsItem[] = [
   ...fengNews,
