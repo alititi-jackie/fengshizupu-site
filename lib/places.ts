@@ -59,4 +59,12 @@ export const genealogyCollections: GenealogyCollection[] = [
     description: '上海图书馆藏本，民国年间印本，101 页，逐页在线连读，可下载 PDF。', page: 2 },
   { title: '浙江慈谿冯氏宗谱', url: 'https://zp2.fengshizupu.com/book/cixi-feng.html',
     description: '天一阁藏本，清同治抄本，冯维岳纂修，42 页，逐页在线连读，可下载 PDF。', page: 2 },
+  { title: '江苏宜兴祝堂冯氏家乘', url: 'https://zp2.fengshizupu.com/book/zhutang-feng.html',
+    description: '上海图书馆藏本，民国三十年（1941）重辑，冯舜耕纂修，八卷 1468 页，逐页在线连读，可下载 PDF。', page: 2 },
+  { title: '湖南湘乡山田冯氏族谱', url: 'https://zp2.fengshizupu.com/book/shantian-feng.html',
+    description: '上海图书馆藏本，清木活字本，存第七卷世系 186 页，逐页在线连读，可下载 PDF。', page: 2 },
+  { title: '湖南岳阳冯氏族谱', url: 'https://zp2.fengshizupu.com/book/yueyang-feng.html',
+    description: '上海图书馆藏本，民国二十五年（1936）续修，存卷为宗图 183 页，逐页在线连读，可下载 PDF。', page: 2 },
+  { title: '江西遂川冯氏族谱', url: 'https://zp2.fengshizupu.com/book/suichuan-feng.html',
+    description: '上海图书馆藏本，民国三十七年（1948）修，不分卷 170 页，逐页在线连读，可下载 PDF。', page: 2 },
 ];
