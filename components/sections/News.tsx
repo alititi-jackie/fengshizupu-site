@@ -213,7 +213,7 @@ export function NewsArticle({ slug }: { slug: string }) {
             caption={feature.cover[0]} width={1080} height={650} inset={[24, 24, 24, 24]} />
           {feature.sections.map(([heading, text, img, imgCaption]) => (
             <section key={heading}><h2>{heading}</h2><p>{text}</p>
-              {img && <PageImage src={img} alt={imgCaption ?? heading} caption={imgCaption ?? heading} />}
+              {img && <PageImage src={img} alt={imgCaption ?? heading} caption={imgCaption ?? heading} {...(entry.category === 'collection' ? { croppedPreview: true, inset: [0, 0, 30, 0] as [number, number, number, number] } : {})} />}
             </section>
           ))}
         </>
