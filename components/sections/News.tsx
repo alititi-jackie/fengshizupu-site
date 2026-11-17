@@ -203,8 +203,10 @@ export function NewsArticle({ slug }: { slug: string }) {
 
   const feature = fengNews.find((item) => item.slug === slug);
   const Body = legacyArticles[slug];
+  const bookLink = feature && 'book' in feature && feature.book
+    ? { href: feature.book as string, title: feature.bookTitle as string } : undefined;
   return (
-    <NewsArticleLayout entry={entry} references={feature?.references}>
+    <NewsArticleLayout entry={entry} references={feature?.references} bookLink={bookLink}>
       {feature && (
         <>
           <PageImage croppedPreview src={`/news/${feature.slug}.webp`} alt={feature.cover.join('。')}
@@ -221,14 +223,16 @@ export function NewsArticle({ slug }: { slug: string }) {
   );
 }
 
-function NewsArticleLayout({ entry, references, children }: {
+function NewsArticleLayout({ entry, references, bookLink, children }: {
   entry: NewsItem;
   references?: string[][];
+  bookLink?: { href: string; title: string };
   children: ReactNode;
 }) {
   return (
     <>
       <p><span className="badge">{entry.tag}</span> <small>{fmtDate(entry.date)}</small></p>
+      {bookLink && <p>查看完整族谱：<SiteLink href={bookLink.href}>《{bookLink.title}》</SiteLink> ›</p>}
       {children}
       {references && (
         <section>
