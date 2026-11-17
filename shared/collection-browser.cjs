@@ -37,7 +37,7 @@ const assert = require('node:assert/strict');
   await page.locator('#mScroll').click(); assert(await page.locator('#scrollView .spage').count());
   assert(await page.locator('.dlrow a').count());
   await page.screenshot({ path: `site-${width}.png`, fullPage: true });
-  assert.deepEqual(errors, []); await page.close();
+  assert.deepEqual(errors, []); await page.unrouteAll({ behavior: 'wait' }); await page.close();
  } } finally { await browser.close(); }
  console.log('Collection search and reading flows passed at 320, 390, 1440px');
 })().catch(error => { console.error(error); process.exit(1); });
