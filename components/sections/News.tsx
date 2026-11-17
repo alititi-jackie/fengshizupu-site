@@ -209,8 +209,10 @@ export function NewsArticle({ slug }: { slug: string }) {
         <>
           <PageImage croppedPreview src={`/news/${feature.slug}.webp`} alt={feature.cover.join('。')}
             caption={feature.cover[0]} width={1080} height={650} inset={[24, 24, 24, 24]} />
-          {feature.sections.map(([heading, text]) => (
-            <section key={heading}><h2>{heading}</h2><p>{text}</p></section>
+          {feature.sections.map(([heading, text, img, imgCaption]) => (
+            <section key={heading}><h2>{heading}</h2><p>{text}</p>
+              {img && <PageImage src={img} alt={imgCaption ?? heading} caption={imgCaption ?? heading} />}
+            </section>
           ))}
         </>
       )}
