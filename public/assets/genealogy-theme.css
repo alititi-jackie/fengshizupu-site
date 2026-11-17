@@ -141,3 +141,6 @@
 .search-row-d{display:block;font-size:13.5px;color:#6f675a;margin-top:2px}
 .search-note{font-size:13.5px;color:#8a8172;margin:10px 0 0}
 .search-note a{color:var(--red)}
+.search-more{margin:34px 0 6px;padding:16px 18px;background:var(--paper);border:1px solid var(--line);border-radius:12px;text-align:center;font-size:15.5px}
+.search-more a{color:var(--red);font-weight:600;text-decoration:none}
+.search-more a:hover{text-decoration:underline}

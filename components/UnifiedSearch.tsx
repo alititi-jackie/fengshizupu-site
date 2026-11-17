@@ -35,6 +35,12 @@ export default function UnifiedSearch() {
     </form>
   );
 
+  const more = (
+    <p className="search-more">
+      没有找到合适的？<a href="/archives/">去族谱目录查看全部 ›</a>
+    </p>
+  );
+
   if (!q) {
     return (
       <>
@@ -129,6 +135,7 @@ export default function UnifiedSearch() {
       {total === 0 && (
         <p className="search-status">没有找到与“{q}”相关的内容。可以换个说法试试：村名、房支名、姓名、谱书名、堂号，或者恩平原书的页码数字。</p>
       )}
+      {more}
     </>
   );
 }
