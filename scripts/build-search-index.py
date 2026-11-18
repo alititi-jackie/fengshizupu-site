@@ -4,7 +4,7 @@
 汇总四个来源，生成主站 public/search-index.json：
   1. 恩平站 search-index.json（原书房支/村庄/目录 + 页码直达 + 小湴新谱条目）
   2. 恩平站 person-index.json（小湴村凝斋房 2026 版 1,133 人）
-  3. zp1 / zp2 的 data/books.json（各地族谱收藏 22 部，书名+关键词）
+  3. zp1 / zp2 / zp3 的 data/books.json（各地族谱收藏 25 部，书名+关键词）
   4. 主站资讯（按 sitemap 逐篇取 og:title / og:description）
 
 每条索引带 s 字段 = 繁转简后的检索文本；另输出 t2s 字符表供前端把查询转简体匹配。
@@ -82,7 +82,7 @@ def main():
             s_text=f'{p["t"]} {p.get("k", "")} {s_detail}')
 
     # ---- 3. zp1 / zp2 收藏谱 ----
-    for shard in ("zp1", "zp2"):
+    for shard in ("zp1", "zp2", "zp3"):
         data = get_json(f"https://raw.githubusercontent.com/alititi-jackie/"
                         f"fengshizupu-{shard}/main/data/books.json")
         books = data["books"] if isinstance(data, dict) else data
