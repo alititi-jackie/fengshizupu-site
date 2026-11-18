@@ -66,7 +66,7 @@ export const genealogyCollections: GenealogyCollection[] = [
   { title: '湖南岳阳冯氏族谱', url: 'https://zp2.fengshizupu.com/book/yueyang-feng.html',
     description: '上海图书馆藏本，民国二十五年（1936）续修，存卷为宗图 183 页，逐页在线连读，可下载 PDF。', page: 2 },
   { title: '江西遂川冯氏族谱', url: 'https://zp2.fengshizupu.com/book/suichuan-feng.html',
-    description: '上海图书馆藏本，民国三十七年（1948）修，不分卷 170 页，逐页在线连读，可下载 PDF。', page: 2 },,
+    description: '上海图书馆藏本，民国三十七年（1948）修，不分卷 170 页，逐页在线连读，可下载 PDF。', page: 2 },
   { title: '湖南长沙冯氏续修甲寅谱', url: 'https://zp3.fengshizupu.com/book/changsha-feng-jiayin.html',
     description: '上海图书馆藏本，民国三年（1914）修，冯忠璘主修，三十卷 2,037 页，逐页在线连读，可下载 PDF。', page: 3 },
   { title: '江苏毗陵冯氏宗谱', url: 'https://zp3.fengshizupu.com/book/piling-feng-shixiu.html',
